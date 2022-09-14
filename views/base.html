@@ -14,51 +14,57 @@
 <body>
 
     
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 100vh;">
         <div class="row">
             
             {% include "components/navbar.html" %}
 
             <!-- Parte Derecha -->
-            <div class="col m-0 p-0" style="min-height: 721px;">
+            <div class="col m-0 p-0" style="height: 100vh;">
 
-                
-                <nav class="navbar navbar-light border-light border-bottom " style="background: #25527B ;">
-                    <div class="container-fluid ">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                            {% block menu %}
-
-
-                            {% endblock %}  
-                              
-                            </li>
-                        </ul>
-                        <div class="dropdown mx-2">
-                            <button class="btn btn-transparent text-white-50 dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user mx-2"></i>
-                                {{name}} {{surname}}
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu w-10" aria-labelledby="dropdownMenuButtonDark">
-                              <li><a class="dropdown-item" href="#">Perfil</a></li>
-                              <li><a class="dropdown-item" href="#">Configuraciones</a></li>
-                              <li><a class="dropdown-item" href="#">Ayuda</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="/pages/">Cerrar Sesion</a></li>
-                            </ul>
-                            
-                        </div>
-                        
+                <div style="height: 100%; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
+    
+                    <!-- Navbar -->
+                    <div class="row m-0 p-0">
+                        <nav class="navbar navbar-light border-light border-bottom " style="background: #25527B ; width: 100%;">
+                            <div class="container-fluid ">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                    {% block menu %}
+        
+        
+                                    {% endblock %}  
+                                      
+                                    </li>
+                                </ul>
+                                <div class="dropdown mx-2">
+                                    <button class="btn btn-transparent text-white-50 dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-user mx-2"></i>
+                                        {{name}} {{surname}}
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu w-10" aria-labelledby="dropdownMenuButtonDark">
+                                      <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                      <li><a class="dropdown-item" href="#">Configuraciones</a></li>
+                                      <li><a class="dropdown-item" href="#">Ayuda</a></li>
+                                      <li><hr class="dropdown-divider"></li>
+                                      <li><a class="dropdown-item" href="/pages/">Cerrar Sesion</a></li>
+                                    </ul>
+                                    
+                                </div>
+                                
+                            </div>
+                        </nav>
                     </div>
-                </nav>
 
-                <!-- Contenedor -->
-                <!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
+                    <div class="row m-0 p-0">
+                        {% block content %} 
+
+                        {% endblock %}
+                    </div>
                     
-                    {% block content %} 
-
-                    {% endblock %} 
-                <!-- </div> -->
+                    
+                </div>
+                
             </div>
         </div>
     </div>

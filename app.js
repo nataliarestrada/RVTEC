@@ -1,21 +1,18 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
-const { port, secret } = require("./config");
-// const userRoutes = require("./routes/usuarios.js")
+const { port, secret } = require("./config")
 const path = require("path")
-const session = require("express-session");
-const addSession = require("./middlewares/addSession");
+const session = require("express-session")
+const addSession = require("./middlewares/addSession")
 
 
 /*---------Routes Imports---------*/
 //const userRoutes = require("./routes/userRoutes")
 const authRoutes = require("./routes/authRoutes")
+const clientRoutes = require("./routes/clientRoutes")
 
 const app = express()
 
-// function views(document){
-//     return path.join(__dirname,"views",document)
-// }
 
 app.use(express.static(path.join(__dirname,"static")))
 app.use(express.json())
@@ -29,12 +26,13 @@ app.use(
       saveUninitialized: false,
     })
   );
-  app.use(addSession);
+app.use(addSession);
 
-// app.use(userRoutes)
+
 /*---------Using Routes---------*/
 //app.use(userRoutes);
-app.use(authRoutes);
+app.use(authRoutes)
+app.use(clientRoutes)
 
 nunjucks.configure('views', {
     autoescape: true,
@@ -42,8 +40,6 @@ nunjucks.configure('views', {
 });
 
 
-
-
-app.listen(4000,() => {
-    console.log("Funcionando... http://localhost:4000")
+app.listen(port,() => {
+    console.log("Funcionando... http://localhost:"+ port)
 })
