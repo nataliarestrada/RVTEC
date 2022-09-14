@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block estilos %} 
+
+{% endblock %} 
+
+{% block menu %}
+<a class="nav-link text-white-50" aria-current="page" href="#">Inicio <i class="fa-solid fa-angle-right mx-2"></i> Comprobantes <i class="fa-solid fa-angle-right mx-2"></i> Entrega <i class="fa-solid fa-angle-right mx-2"></i> Vista Previa</a>
+
+{% endblock %}
+
+{% block content %}
+<!-- Contenedor -->
+<div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
+    <section>
+        <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-md-3">
+                <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">Comprobante de Ingreso N°XXX</h4>
+                <img
+                    src="{% static 'img/InformeRecibo.jpg' %}"
+                    width="630"
+                    height="400"
+                    alt="MDB Logo"
+                    loading="lazy"
+                />
+                    <!-- Submit button -->
+                <a class="btn text-white btn-success mt-4" href="{% static 'documents/Comprobante-Entrega-N0XX.pdf' %}" download="Comprobante-Entrega-N0XX" role="button">Descargar</a>
+                <a class="btn text-white mt-4" style="background-color: rgb(101, 34, 177);" href="#" role="button">Imprimir</a>
+                <a class="btn text-white mt-4" style="background-color: rgb(34, 148, 177);" href="#" role="button">Descargar e Imprimir</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+  </div>
+{% endblock %}
