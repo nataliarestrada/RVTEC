@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block estilos %} 
 <style>
@@ -184,7 +183,7 @@
                             <td>30/05/2022</td>
                             <td>
                                 <a href="/pages/ver-comprobante" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <a href="{% static 'documents/Comprobante-Entrega-N0XX.pdf' %}" download="Comprobante-Entrega-N0XX" class="comprobant1" title="Descargar" data-toggle="tooltip"><i class="fa-solid fa-download"></i></a>
+                                <a href="/documents/Comprobante-Entrega-N0XX.pdf" download="Comprobante-Entrega-N0XX" class="comprobant1" title="Descargar" data-toggle="tooltip"><i class="fa-solid fa-download"></i></a>
                                 <a href="#" class="comprobant" title="Imprimir" data-toggle="tooltip"><i class="fa-solid fa-print"></i></a>
                             </td>
                         </tr>   

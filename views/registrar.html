@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,54 +12,56 @@
 
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 721px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
         
-        <form class="d-flex flex-column justify-content-center p-4 text-dark bg-white bg-opacity-40 rounded-3" style="box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2); width: 450px;" action="">
+        <form class="d-flex flex-column justify-content-center p-4 text-dark bg-white bg-opacity-40 rounded-3" style="box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2); width: 450px;" action="/registrar" method="post">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="text-center mb-3">
-                <img src="{% static 'img/logo.png' %}" class="rounded" alt="..." height="100">
+                <img src="/img/logo.png" class="rounded" alt="..." height="100">
                 <h1>Bienvenido</h1>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-2">
                   <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" />
+                    <input name="name" type="text" id="form3Example1" class="form-control" />
                     <label class="form-label" for="form3Example1">Nombre</label>
                   </div>
                 </div>
                 <div class="col-md-6 mb-2">
                   <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" />
+                    <input name="surname" type="text" id="form3Example2" class="form-control" />
                     <label class="form-label" for="form3Example2">Apellido</label>
                   </div>
                 </div>
             </div>
-
             <!-- Email input -->
             <div class="row-6 mb-2">
-                <input type="text" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Nombre de Usuario</label>
-            </div>
-
-            <!-- Password input -->
-            <div class="row-6 mb-2">
-                <input type="email" id="form3Example4" class="form-control" />
+                <input name="email" type="email" id="form3Example4" class="form-control" />
                 <label class="form-label" for="form3Example4">Correo electronico</label>
             </div>
+            
+            <div class="row-6 mb-2">
+                <input name="phone" type="number" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Número de celular</label>
+            </div>
+
+            <div class="row-6 mb-2">
+              <input name="profilePicture" type="hidden" id="form3Example5" class="form-control" enabled/>
+            </div>
+
 
             <!-- Password input -->
             <div class="row-6 mb-2">
-                <input type="password" id="form3Example5" class="form-control" />
-                <label class="form-label" for="form3Example5">Password</label>
+                <input name="password" type="password" id="form3Example5" class="form-control" />
+                <label class="form-label" for="form3Example5">Contraseña</label>
             </div>
 
             <!-- Password input -->
             <div class="row-6 mb-2">
-            <input type="password" id="form3Example6" class="form-control" />
-            <label class="form-label" for="form3Example6">Confirmat Password</label>
+            <input name="confirmPassword" type="password" id="form3Example6" class="form-control" />
+            <label class="form-label" for="form3Example6">Confirmar Contraseña</label>
             </div>
 
             <!-- Submit button -->
-            <a class="btn text-white mt-4" style="background: #25527B ;" href="/pages/" role="button">Registrase</a>
-
+            <button class="btn text-white mt-4" style="background: #25527B ;">Register</button>
           </form>
     </div>
     

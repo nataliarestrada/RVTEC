@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block estilos %} 
 
@@ -21,14 +20,14 @@
                 <div class="card-body p-md-3">
                 <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">Comprobante de Ingreso N°XXX</h4>
                 <img
-                    src="{% static 'img/InformeRecibo.jpg' %}"
+                    src="/img/InformeRecibo.jpg"
                     width="630"
                     height="400"
                     alt="MDB Logo"
                     loading="lazy"
                 />
                     <!-- Submit button -->
-                <a class="btn text-white btn-success mt-4" href="{% static 'documents/Comprobante-Entrega-N0XX.pdf' %}" download="Comprobante-Entrega-N0XX" role="button">Descargar</a>
+                <a class="btn text-white btn-success mt-4" href="/documents/Comprobante-Entrega-N0XX.pdf" download="Comprobante-Entrega-N0XX" role="button">Descargar</a>
                 <a class="btn text-white mt-4" style="background-color: rgb(101, 34, 177);" href="#" role="button">Imprimir</a>
                 <a class="btn text-white mt-4" style="background-color: rgb(34, 148, 177);" href="#" role="button">Descargar e Imprimir</a>
                 </div>

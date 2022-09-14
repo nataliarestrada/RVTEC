@@ -6,6 +6,7 @@ class User{
         this.name = user.name
         this.surname = user.surname
         this.email = user.email
+        this.phone = user.phone
         this.profilePicture = user.profilePicture
         this.password = user.password
         this.confirmPassword = user.confirmPassword
@@ -27,11 +28,14 @@ class User{
 
     async save(){
         const newUser = await insert("users",{
-            name:this.name,
-            email:this.email,
-            profilePicture:this.profilePicture,
-            password:this.password
+            name: this.name,
+            surname: this.surname,
+            email: this.email,
+            phone: this.phone,
+            profilePicture: this.profilePicture,
+            password: this.password
         })
+        console.log(newUser);
         this.idUser = newUser
         // console.log("En User")
         // console.log(newUser)
@@ -54,7 +58,7 @@ class User{
 
     validate(){
         let result = {success: true, errors: []}
-        if(!(this.name && this.surname && this.email && this.password && this.confirmPassword)){
+        if(!(this.name && this.surname && this.email && this.password && this.confirmPassword && this.phone)){
             result.success = false
             result.errors.push("Rellena todos los campos")
         }

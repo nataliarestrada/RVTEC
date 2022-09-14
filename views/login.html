@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,21 +13,21 @@
 
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 721px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
         
-        <form class="d-flex flex-column align-items-center justify-content-center p-3 bg-white text-dark bg-opacity-40 rounded-3" style="box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2); width: 450px;" action="">
+        <form class="d-flex flex-column align-items-center justify-content-center p-3 bg-white text-dark bg-opacity-40 rounded-3" style="box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2); width: 450px;" action="/login" method="post">
             <!-- Email input -->
         
             <div class="text-center mb-3">
-                <img src="{% static 'img/logo.png' %}" class="rounded" alt="..." height="100">
+                <img src="/img/logo.png" class="rounded" alt="..." height="100">
                 <h1>Bienvenido</h1>
             </div>
             <div class="form-outline mb-3">
-              <input type="email" id="form2Example1" class="form-control" placeholder="Usuario" />
+              <input name="email" type="email" id="form2Example1" class="form-control" placeholder="Usuario" />
               <!-- <label class="form-label" for="form2Example1">Usuario</label> -->
             </div>
           
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example2" class="form-control" placeholder="Contraseña"/>
+              <input name="password" type="password" id="form2Example2" class="form-control" placeholder="Contraseña"/>
               <!-- <label class="form-label" for="form2Example2">Contraseña</label> -->
             </div>
           
@@ -48,8 +48,7 @@
             </div>
           
             <!-- Submit button -->
-            <a class="btn text-white mb-4" style="background: #25527B ;" href="/pages/home" role="button">Iniciar Sesion</a>
-          
+            <button class="btn text-white mt-4" style="background: #25527B ;">Iniciar sessión</button>
             <!-- Register buttons -->
             <!-- <div class="text-center">
               <p>No tiene usuario? <a href="#" style="color: #25527B ;">Registrese aqui</a></p>

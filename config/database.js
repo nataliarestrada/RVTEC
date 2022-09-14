@@ -24,11 +24,11 @@ const connection = mysql.createConnection({
 }
 
 async function insert(tableName, data){
-    try{
+    try {
         await query(`INSERT INTO ${tableName}(??) VALUES(?)`,[Object.keys(data), Object.values(data)])
-        return {data, success:true}
-    }catch(error){
-        return {error, success:false}
+        return {data, success: true}
+    } catch(error){
+        return {error, success: false}
     }
 }
 //No podemos usar delete: palabra reservada

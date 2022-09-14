@@ -1,47 +1,43 @@
 const User = require("../models/User")
-const Movie = require("../models/Movie")
 class AuthController{
 
-/*     async getHomeView(req, resp){
-        const movies = (await Movie.readAll()).slice(0,5)
-        const trendingMovies = (await Movie.readAllOrderMoreViews()).slice(1,5)
-        const topRatedMovies = (await Movie.readAllOrderRating()).slice(1,5)
-        return resp.render("home",{formCSS: "css/home.css", documentName: "Home", movies: movies, 
-        topRatedMovies: topRatedMovies, trendingMovies:trendingMovies })
-        
-    } */
+    async getWelcomeView(req, res){
+        const data = await User.readAll();
+        if (data[0]) {
+            return res.render("login.html")
+        }
+        else {
+            return res.render("bienvenida.html")
+        }
+    }
+
+    async getHomeView(req, res){
+        const user = await User.readOne(req.session.idUser)
+        return res.render("home.html", {name: user[0].name, surname: user[0].surname})
+    }
 
     getLoginView(req,res){
-        // console.log(req.session)
-        return res.render("login",{formCSS: "/css/loginCSS.css", documentName: "Login"})
+
+        return res.render("login.html")
     }
 
     getRegistrationView(req,res){
-        return res.render("registration",{formCSS: "css/loginCSS.css", documentName: "Registration"})
+        return res.render("registrar.html")
     }
 
     async login(req, res){
         const userCredential = req.body
         const user = await User.readByEmail(userCredential.email)
         if(user.length === 0){
-            return res.render("login",{
-                formCSS: "/css/loginCSS.css",
-                validation:{
-                errors:["Usuario no registrado"]
-            }})
+            return res.render("login.html")
         }
         if(user[0].password !== userCredential.password){
-            return res.render("login",{
-                formCSS: "css/loginCSS.css",
-                validation:{
-                errors:["Credenciales icorrectas"]
-            }})
+            return res.render("login.html")
         }    
-        /*---------Session Info---------*/
+       
         req.session.loggedIn = true
         req.session.idUser = user[0].idUser
-        return res.redirect("/")
-        
+        return res.redirect("/home")
     
     }
 
@@ -50,26 +46,19 @@ class AuthController{
         return res.redirect("/")
     }
     
-/*     async signUp(req,res){
-        
+    async signUp(req,res){
+        console.log(req.body);
         const newUser = new User(req.body)
         const validation = newUser.validate()
-        console.log(validation)
-
-        if(newUser.email === "admin@admin.com"){
-            newUser.typeUser = 1;
-        }else{
-            newUser.typeUser = 0;
-        }
 
         if(validation.success){
             await newUser.save()
             
-            return res.redirect("/")
+            return res.redirect("/login")
         }
         
-        return res.render("registration",{validation,user:newUser, formCSS: "css/loginCSS.css"})
-    } */
+        return res.render("registrar.html")
+    }
 
      
 }
