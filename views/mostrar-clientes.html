@@ -125,7 +125,7 @@
 
 {% block content %}
 <!-- Contenedor -->
-<div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
+<!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
                     
     <section class="">
         <div class="table-responsive">
@@ -134,7 +134,7 @@
                     <div class="row">
                         <div class="col-sm-3"><h2>Registro de <b>Clientes</b></h2></div>
                         <div class="col-sm-3">
-                            <a class="btn btn-success" href="/pages/nuevo-cliente" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
+                            <a class="btn btn-success" href="/registrar_cliente" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex">
@@ -146,12 +146,12 @@
                                 </div>
                                 <select class="form-select" aria-label="Default select example" name="filtro" style="width: 100px;">
                                     <option value="1">Codigo</option>
-                                    <option value="1">DNI</option>
-                                    <option value="2">Nombre</option>
-                                    <option value="3">Apellido</option>
-                                    <option value="4">N° Contacto</option>
-                                    <option value="5">N° Respaldo</option>
-                                    <option value="6">Fecha</option>
+                                    <option value="2">DNI</option>
+                                    <option value="3">Nombre</option>
+                                    <option value="4">Apellido</option>
+                                    <option value="5">N° Contacto</option>
+                                    <option value="6">N° Respaldo</option>
+                                    <option value="7">Fecha</option>
                                 </select>
                             </div>
                         </div>
@@ -174,62 +174,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for client in clients %}
                         <tr>
-                            <td>1</td>
-                            <td>Lisandro Moises</td>
-                            <td>Tolaba</td>
-                            <td>40666444</td>
-                            <td>3885234215</td>
-                            <td>3884238593</td>
-                            <td>20/05/2022</td>
+                            <td>{{client.idClient}}</td>
+                            <td>{{client.name}}</td>
+                            <td>{{client.surname}}</td>
+                            <td>{{client.dni}}</td>
+                            <td>{{client.contact}}</td>
+                            <td>{{client.backup}}</td>
+                            <td>{{client.crateDate | date("D/M/Y")}}</td>
                             <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
                                 <a href="#" class="delete" title="Eliminar" data-toggle="tooltip"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria</td>
-                            <td>Cardozo</td>
-                            <td>40666444</td>
-                            <td>3886394309</td>
-                            <td>3885931634</td>
-                            <td>23/05/2022</td>
-                            <td>
-                                <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="#" class="delete" title="Eliminar" data-toggle="tooltip"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Franco Angel</td>
-                            <td>Rodriguez</td>
-                            <td>40666444</td>
-                            <td>3884027549</td>
-                            <td>3884175942</td>
-                            <td>23/05/2022</td>
-                            <td>
-                                <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="#" class="delete" title="Eliminar" data-toggle="tooltip"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Misael </td>
-                            <td>Vilca</td>
-                            <td>40666444</td>
-                            <td>388579323</td>
-                            <td>388682934</td>
-                            <td>27/05/2022</td>
-                            <td>
-                                <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <a href="#" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="#" class="delete" title="Eliminar" data-toggle="tooltip"><i class="fa-solid fa-trash-can"></i></a>
-                            </td>
-                        </tr>       
+                        {% endfor %}
                     </tbody>
                 </table>
                 
@@ -237,5 +197,5 @@
         </div> 
     </section>
          
-</div>
+<!-- </div> -->
 {% endblock %}

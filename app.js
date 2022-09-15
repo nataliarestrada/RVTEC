@@ -10,6 +10,7 @@ const addSession = require("./middlewares/addSession")
 //const userRoutes = require("./routes/userRoutes")
 const authRoutes = require("./routes/authRoutes")
 const clientRoutes = require("./routes/clientRoutes")
+const serviceRoutes = require("./routes/serviceRoutes")
 
 const app = express()
 
@@ -33,12 +34,27 @@ app.use(addSession);
 //app.use(userRoutes);
 app.use(authRoutes)
 app.use(clientRoutes)
+app.use(serviceRoutes)
 
-nunjucks.configure('views', {
-    autoescape: true,
-    express: app
-});
+// nunjucks.configure('views', {
+//     autoescape: true,
+//     express: app
+// });
+const dateFilter = require('nunjucks-date-filter');
 
+function setUpNunjucks(expressApp) {
+
+  let env = nunjucks.configure('views', {
+      autoescape: true,
+      express: app
+  });
+
+  // note that 'date' is the function name you'll use in the template. As shown in nunjucks-date-filter's readme
+  env.addFilter('date', dateFilter);
+
+}
+
+setUpNunjucks();
 
 app.listen(port,() => {
     console.log("Funcionando... http://localhost:"+ port)

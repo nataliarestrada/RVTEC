@@ -10,4 +10,7 @@ const clientController = new ClientController()
 router.get("/registrar_cliente", clientController.getRegistrationView)
 router.post("/registrar_cliente", clientController.signUp)
 
+router.get("/mostrar_clientes", clientController.getClientsView)
+router.get("/historial_clientes", clientController.getHistoryView)
+
 module.exports = router

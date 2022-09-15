@@ -131,7 +131,7 @@
 
 {% block content %}
 <!-- Contenedor -->
-<div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
+<!-- <div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
     <div class="container py-3 bg-white " style="width: 95%;border-radius: 15px;">
         <h3 class="p-1">Registrar Servicio</h3>
         
@@ -140,12 +140,13 @@
           <h5 class="">Datos Celular</h5>
           <div class="row my-4">
     
-              <div class="col-sm-6">
-                  <div class="d-flex justify-content-end">
+              <!-- <div class="col-sm-6"> -->
+                  <div class="d-flex justify-content-start">
                     <label class="form-label" style="width: 150px;"> Cliente asociado<span class="text-secondary">(*)</span></label>
+                    <input type="text" class="form-control mx-2" style="width: 200px;" placeholder="{{client.name}}">
                       <!-- <i class="fa-solid fa-magnifying-glass"></i>
                       <input type="text" class="form-control" placeholder="Search&hellip;"> -->
-                      <div class="search-box mx-1" style="width: 310px;">
+                      <!-- <div class="search-box mx-1" style="width: 310px;">
                           <i class="fa-solid fa-magnifying-glass"></i>
                           <input type="text" class="form-control" placeholder="Search&hellip;">
                       </div>
@@ -155,15 +156,39 @@
                         <option value="2">Nombre</option>
                         <option value="3">Apellido</option>
 
-                      </select>
+                      </select> -->
+                      <!-- Button trigger modal -->
+                    <button type="button" class="btn text-white mt-4" style="background: #25527B ;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Elegir
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn text-white" style="background: #25527B ;" >Aceptar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
-              </div>
-              <div class="col-sm">
+              <!-- </div> -->
+              <!-- <div class="col-sm">
                   <a class="btn btn-info" href="#" role="button"><i class="fa-solid fa-magnifying-glass mx-1"></i>Buscar</a>
               </div>
               <div class="col">
                 <a class="btn btn-success" href="registrar-usuario.html" role="button"><i class="fa-solid fa-plus"></i>Nuevo</a>
-              </div>
+              </div> -->
           </div>
           <div class="row my-3">
               <div class="col">
@@ -268,5 +293,5 @@
     </div>
 
 
-</div>
+<!-- </div> -->
 {% endblock %}

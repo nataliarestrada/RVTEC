@@ -67,4 +67,4 @@ class Service{
     }
 }
 
-module.exports = Phone
+module.exports = Service
