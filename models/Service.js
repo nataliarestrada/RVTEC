@@ -59,7 +59,7 @@ class Service{
 
     validate(){
         let result = {success: true, errors: []}
-        if(!(this.diagnostic && this.startDate && this.estimateDate && this.state && this.description && this.idUser && this.idPhone && this.idClient)){
+        if(!(this.diagnostic && this.startDate && this.estimateDate && this.stateService && this.description && this.idUser && this.idPhone && this.idClient)){
             result.success = false
             result.errors.push("Rellena todos los campos")
         }

@@ -130,167 +130,179 @@
 {% endblock %}
 
 {% block content %}
+
 <!-- Contenedor -->
 <!-- <div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
-    <div class="container py-3 bg-white " style="width: 95%;border-radius: 15px;">
-        <h3 class="p-1">Registrar Servicio</h3>
-        
-        <form action="#" class="m-2">
-          <hr class="dropdown-divider">
-          <h5 class="">Datos Celular</h5>
-          <div class="row my-4">
+  <div class="container py-3 bg-white " style="width: 95%;border-radius: 15px;">
+    <h3 class="p-1">Registrar Servicio</h3>
+    <form action="/buscar_cliente" class="m-2" method="post">
+      <div class="row my-4">
+
+        <div class="col-sm-4">
+            <div class="d-flex">
+              <label class="form-label" style="width: 150px;"> Cliente asociado<span class="text-secondary">(*)</span></label>
+                <!-- <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="form-control" placeholder="Search&hellip;"> -->
+                <div class="search-box mx-1" style="width: 310px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input name="dni" type="text" class="form-control" placeholder="Ingrese DNI&hellip;">
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+            <button class="btn btn-info"><i class="fa-solid fa-magnifying-glass mx-1"></i>Buscar</button>
+        </div>
+        <div class="col-2">
+          <a class="btn btn-success" href="registrar-usuario.html" role="button"><i class="fa-solid fa-plus"></i>Nuevo</a>
+        </div>
+      </div>
+    </form>
+
+    {% if error %}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>El Cliente no existe!</strong> Por favor registre un nuevo cliente.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    {% endif %}
+
+    <form action="/registrar_servicio" class="m-2" method="post">
+      <hr class="dropdown-divider">
+      <h5 class="">Datos del Cliente</h5>
     
-              <!-- <div class="col-sm-6"> -->
-                  <div class="d-flex justify-content-start">
-                    <label class="form-label" style="width: 150px;"> Cliente asociado<span class="text-secondary">(*)</span></label>
-                    <input type="text" class="form-control mx-2" style="width: 200px;" placeholder="{{client.name}}">
-                      <!-- <i class="fa-solid fa-magnifying-glass"></i>
-                      <input type="text" class="form-control" placeholder="Search&hellip;"> -->
-                      <!-- <div class="search-box mx-1" style="width: 310px;">
-                          <i class="fa-solid fa-magnifying-glass"></i>
-                          <input type="text" class="form-control" placeholder="Search&hellip;">
-                      </div>
-                      <select class="form-select " aria-label="Default select example" name="filtro" style="width: 110px;">
-                        <option value="1">Codigo</option>
-                        <option value="1">DNI</option>
-                        <option value="2">Nombre</option>
-                        <option value="3">Apellido</option>
-
-                      </select> -->
-                      <!-- Button trigger modal -->
-                    <button type="button" class="btn text-white mt-4" style="background: #25527B ;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Elegir
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            ...
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn text-white" style="background: #25527B ;" >Aceptar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-              <!-- </div> -->
-              <!-- <div class="col-sm">
-                  <a class="btn btn-info" href="#" role="button"><i class="fa-solid fa-magnifying-glass mx-1"></i>Buscar</a>
-              </div>
-              <div class="col">
-                <a class="btn btn-success" href="registrar-usuario.html" role="button"><i class="fa-solid fa-plus"></i>Nuevo</a>
-              </div> -->
+      <div class="row my-3">
+          
+          <div class="col">
+            <label class="form-label">Nombre</label>
+            <input name="name" value="{{client.name}}" type="text" class="form-control" disabled>
           </div>
-          <div class="row my-3">
-              <div class="col">
-                <label class="form-label">Modelo<span class="text-secondary">(*)</span> </label>
-                <input type="text" class="form-control" >
-              </div>
-              <div class="col">
-                <label class="form-label">Contraseña<span class="text-secondary">(Opcional)</span> </label>
-                <input type="text" class="form-control" >
-              </div>
-              <div class="col">
-                <label class="form-label">Pin de Seguridad <span class="text-secondary">(Opcional)</span> </label>
-                <input type="text" class="form-control" >
-              </div>
-              <div class="col">
-                <label class="form-label">patron<span class="text-secondary">(Opcional)</span> </label>
-                <input type="text" class="form-control" >
-              </div>
-              <div class="col">
-                <img src="/img/matriz3x3_demo.gif" class="rounded" alt="..." width="130">
-              </div>
+          <div class="col">
+            <label class="form-label">Apellido</label>
+            <input value="{{client.surname}}" type="text" class="form-control" disabled>
           </div>
-          <div class="row-7 mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Estado del celular<span class="text-secondary">(*)</span></label>
-              <textarea name="comment" placeholder="Ejemplo: si el celular está roto en alguna zona, si fué abierto o si se encuentra mojado" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <div class="col">
+            <label class="form-label">DNI</label>
+            <input value="{{client.dni}}" type="text" class="form-control" disabled>
           </div>
-          <hr class="dropdown-divider">
-          <hr class="dropdown-divider">
-          <h5 class="">Info Reparacion</h5>
+          <div class="col">
+            <label class="form-label">Número de Contacto</label>
+            <input value="{{client.contact}}" type="text" class="form-control" disabled>
+          </div>
+          <div class="col">
+            <label class="form-label">Número de Respaldo</label>
+            <input value="{{client.backup}}" type="text" class="form-control" disabled>
+          </div>
+      </div>
+      
+      
+
+
+
+      <hr class="dropdown-divider">
+      <h5 class="">Datos Celular</h5>
+      
+      <div class="row my-3">
+          <div class="col">
+            <label class="form-label">Marca<span class="text-secondary">(*)</span> </label>
+            <input name="idClient" value="{{client.idClient}}" type="hidden" class="form-control">
+            <input name="marca" type="text" class="form-control">
+          </div>
+          <div class="col">
+            <label class="form-label">Modelo<span class="text-secondary">(*)</span> </label>
+            <input name="model" type="text" class="form-control" >
+          </div>
+          <div class="col">
+            <label class="form-label">Contraseña<span class="text-secondary">(Opcional)</span> </label>
+            <input name="password" type="text" class="form-control" >
+          </div>
+          <div class="col">
+            <label class="form-label">Pin de Seguridad <span class="text-secondary">(Opcional)</span> </label>
+            <input name="pin" type="text" class="form-control" >
+          </div>
+          <div class="col">
+            <label class="form-label">patron<span class="text-secondary">(Opcional)</span> </label>
+            <input name="patron" type="text" class="form-control" >
+          </div>
+          <div class="col">
+            <img src="/img/matriz3x3_demo.gif" class="rounded" alt="..." width="130">
+          </div>
+      </div>
+      <div class="row-7 mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Estado del celular<span class="text-secondary">(*)</span></label>
+          <textarea name="state" placeholder="Ejemplo: si el celular está roto en alguna zona, si fué abierto o si se encuentra mojado" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <hr class="dropdown-divider">
+      <hr class="dropdown-divider">
+      <h5 class="">Info Reparacion</h5>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="exampleFormControlTextarea1" class="form-label">Diagnostico de la reparacion<span class="text-secondary">(*)</span></label>
+          <textarea name="diagnostic" placeholder="Falla a reparar. Por Ejemplo: si el modulo roto, pin de carga no funciona" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="col-6">
           <div class="row mb-3">
             <div class="col">
-              <label for="exampleFormControlTextarea1" class="form-label">Diagnostico de la reparacion<span class="text-secondary">(*)</span></label>
-              <textarea name="comment" placeholder="Falla a reparar. Por Ejemplo: si el modulo roto, pin de carga no funciona" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label class="form-label">Fecha de Ingreso<span class="text-secondary">(*)</span> </label>
+              <input name="startDate" type="text" class="form-control" value="{{fecha | date('D/M/Y')}}" disabled >
             </div>
-            <div class="col-6">
-              <div class="row mb-3">
-                <div class="col">
-                  <label class="form-label">Fecha de Ingreso<span class="text-secondary">(*)</span> </label>
-                  <input type="date" class="form-control" value="2022-06-29" disabled >
-                </div>
-                <div class="col">
-                  <label class="form-label">Fecha Aprox. de Entrega<span class="text-secondary">(*)</span> </label>
-                  <input type="date" class="form-control" >
-                </div>
-                <!-- <div class="col">
-                  <label class="form-label">Fecha Entrega<span class="text-secondary">()</span> </label>
-                  <input type="date" class="form-control" >
-                </div> -->
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <div class="mb-3">
-                <label class="form-label">Costo Reparacion<span class="text-secondary">(*)</span></label>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" placeholder="pesos">
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="mb-3">
-                <label class="form-label">Anticipo<span class="text-secondary">(*)</span></label>
-                <div class="input-group flex-nowrap">
-                    <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" placeholder="pesos">
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <label class="form-label">Estado<span class="text-secondary">(*)</span></label>
-                <select class="form-select" disabled>
-                    <option selected>En Proceso</option>
-                    <option value="1">Con Demora</option>
-                    <option value="2">Para Entrega</option>
-                </select>
+            <div class="col">
+              <label class="form-label">Fecha Aprox. de Entrega<span class="text-secondary">(*)</span> </label>
+              <input name="estimateDate" type="date" class="form-control" >
             </div>
             <!-- <div class="col">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripcion del estado</label>
-              <textarea name="comment" placeholder="Ejemplo: las razones porque se encuentra en demora" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <label class="form-label">Fecha Entrega<span class="text-secondary">()</span> </label>
+              <input type="date" class="form-control" >
             </div> -->
-            <!-- <div class="row mb-3">
-              <div class="mt-3 pt-1">
-                <a class="btn btn-primary btn-lg" href="mostrar-servicios.html" role="button">Guardar</a>
-              </div>
-            </div> -->
-            <div class="row mb-3">
-                <div class="col-1">
-                    <div class="mt-3 pt-1">
-                        <a class="btn btn-primary btn-lg" href="/pages/servicios" role="button">Guardar</a>
-                    </div>
-                </div>
-                <div class="col mx-4">
-                  <div class="mt-3 pt-1">
-                    <a class="btn btn-secondary btn-lg" href="/pages/home" role="button">Cancelar</a>
-                  </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-2">
+          <div class="mb-3">
+            <label class="form-label">Costo Reparacion<span class="text-secondary">(*)</span></label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text">$</span>
+                <input name="costService" type="text" class="form-control" placeholder="pesos">
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="mb-3">
+            <label class="form-label">Anticipo<span class="text-secondary">(*)</span></label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text">$</span>
+                <input name="cost" type="text" class="form-control" placeholder="pesos">
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <input name="stateService" value="1" type="hidden" class="form-control" placeholder="pesos">
+        </div>
+        <!-- <div class="col">
+          <label for="exampleFormControlTextarea1" class="form-label">Descripcion del estado</label>
+          <textarea name="comment" placeholder="Ejemplo: las razones porque se encuentra en demora" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div> -->
+        <!-- <div class="row mb-3">
+          <div class="mt-3 pt-1">
+            <a class="btn btn-primary btn-lg" href="mostrar-servicios.html" role="button">Guardar</a>
+          </div>
+        </div> -->
+        <div class="row mb-3">
+            <div class="col-1">
+                <div class="mt-3 pt-1">
+                    <button class="btn btn-primary btn-lg">Guardar</button>
                 </div>
             </div>
-         
-        </form>
-    </div>
+            <div class="col mx-4">
+              <div class="mt-3 pt-1">
+                <a class="btn btn-secondary btn-lg" href="/pages/home" role="button">Cancelar</a>
+              </div>
+            </div>
+        </div>
+     
+    </form>
+</div>
 
 
 <!-- </div> -->

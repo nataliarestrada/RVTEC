@@ -26,6 +26,11 @@ class Client{
         return client
     }
 
+    static async readByDni(dni){
+        const client = await query("SELECT * FROM clients WHERE dni = ?", [dni])
+        return client
+    }
+
     async save(){
         const newClient = await insert("clients",{
             name:this.name,

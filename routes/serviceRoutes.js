@@ -8,7 +8,7 @@ const serviceController = new ServiceController()
 
 /*---------Registration View---------*/
 router.get("/registrar_servicio", serviceController.getRegistrationView)
-router.post("/registrar_servicio", serviceController.signUp)
+router.post("/registrar_servicio", serviceController.registerService)
 
 //router.get("/mostrar_clientes", clientController.getClientsView)
 //router.get("/historial_clientes", clientController.getHistoryView)

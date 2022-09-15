@@ -1,28 +1,44 @@
 const Service = require("../models/Service")
 const Client = require("../models/Client")
 const User = require("../models/User")
+const Phone = require("../models/Phone")
 class ServiceController{
     
     async getRegistrationView(req,res){
-        const user = await User.readOne(req.session.idUser)
-        const clients = await Client.readAll()
-        return res.render("registrar-servicio.html",{name: user[0].name, surname: user[0].surname})
-    }
-
-    async signUp(req,res){
         const fecha = Date.now();
         const hoy = new Date(fecha);
-        req.body["createDate"]=hoy
-        const newClient = new Client(req.body)
-        const validation = newClient.validate()
+        return res.render("registrar-servicio.html", {fecha: hoy})
+    }
 
-        if(validation.success){
-            await newClient.save()
-            
-            return res.redirect("/home")
+    async registerService(req,res){
+        const p = {
+            marca: req.body.marca,
+            model: req.body.model,
+            pin:  req.body.pin == ""? null:req.body.pin,
+            patron: req.body.patron == ""? null:req.body.patron,
+            state: req.body.state
         }
         
-        return res.render("registrar-cliente.html")
+        console.log(p);
+        const newPhone = new Phone(req.body)
+        const validationPhone = newPhone.validate()
+
+        if(validationPhone.success){
+            const phone = await newPhone.save()
+            console.log(phone);
+        }
+
+        /* const newService = new Service(req.body) 
+        const validationService = newService.validate()
+
+        if(validationService.success){
+            await newService.save()
+            
+            return res.redirect("/home")
+        } */
+        const fecha = Date.now();
+        const hoy = new Date(fecha);
+        return res.render("registrar-servicio.html", {fecha: hoy})
     }
 
     async getServicesView(req,res){

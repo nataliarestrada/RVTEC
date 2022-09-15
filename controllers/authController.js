@@ -12,8 +12,8 @@ class AuthController{
     }
 
     async getHomeView(req, res){
-        const user = await User.readOne(req.session.idUser)
-        return res.render("home.html", {name: user[0].name, surname: user[0].surname})
+        //const user = await User.readOne(req.session.idUser)
+        return res.render("home.html")
     }
 
     getLoginView(req,res){
@@ -37,6 +37,8 @@ class AuthController{
        
         req.session.loggedIn = true
         req.session.idUser = user[0].idUser
+        req.session.name = user[0].name
+        req.session.surname = user[0].surname
         return res.redirect("/home")
     
     }

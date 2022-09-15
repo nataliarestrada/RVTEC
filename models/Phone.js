@@ -53,7 +53,7 @@ class Phone{
 
     validate(){
         let result = {success: true, errors: []}
-        if(!(this.marca && this.model && this.password && this.pin && this.patron && this.state)){
+        if(!(this.marca && this.model && this.state)){
             result.success = false
             result.errors.push("Rellena todos los campos")
         }
