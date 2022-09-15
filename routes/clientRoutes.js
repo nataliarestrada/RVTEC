@@ -7,12 +7,12 @@ const clientController = new ClientController()
 
 
 /*---------Registration View---------*/
-router.get("/registrar_cliente", clientController.getRegistrationView)
-router.post("/registrar_cliente", clientController.signUp)
+router.get("/registrar-cliente", clientController.getRegistrationView)
+router.post("/registrar-cliente", clientController.signUp)
 
-router.get("/mostrar_clientes", clientController.getClientsView)
-router.get("/historial_clientes", clientController.getHistoryView)
+router.get("/mostrar-clientes", clientController.getClientsView)
+router.get("/historial-clientes", clientController.getHistoryView)
 
-router.post("/buscar_cliente", clientController.getClientByDniView)
+router.post("/buscar-cliente", clientController.getClientByDniView)
 
 module.exports = router

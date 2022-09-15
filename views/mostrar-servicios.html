@@ -134,16 +134,16 @@
 
 {% block content %}
 <!-- Contenedor -->
-<div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
+<!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
                     
-    <section class="">
+    <section class="" style="width: 95%; height: 86vh; border-radius: 15px; overflow-y: auto;">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-4"><h2>Registro de <b>Servicios de Reparacion</b></h2></div>
                         <div class="col-sm-2">
-                            <a class="btn btn-success" href="/pages/nuevo-servicio" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
+                            <a class="btn btn-success" href="/registrar-servicio" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex">
@@ -181,23 +181,57 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for service in services %}
                         <tr>
-                            <td>1</td>
-                            <td>Lisandro Moises Tolaba</td>
-                            <td>Samsung A20</td>
-                            <td>20/05/2022</td>
-                            <td>cambio de pin de carga</td>
-                            <td>3000</td>
-                            <td>1500</td>
-                            <td class="bg-info bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Proceso</td>
-                            <td>
+                            <td>{{service.idService}}</td>
+                            <td>{{service.name}} {{service.surname}}</td>
+                            <td>{{service.marca}} {{service.model}}</td>
+                            <td>{{service.startDate | date("D/M/Y")}}</td>
+                            <td>{{service.diagnostic}}</td>
+                            <td>{{service.costService}}</td>
+                            <td>{{service.cost}}</td>
+                            {% if service.idState == 1 %}
+                                <td class="bg-info bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Proceso</td>
+                                <td>
+                                    <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                    <!-- <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
+                                </td>
+                            {% elif service.idState == 2 %}
+                                <td class="bg-warning bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Demora</td>
+                                <td>
+                                    <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                    <!-- <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
+                                </td>
+                            {% elif service.idState == 3 %}
+                                <td class="bg-success bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Pendiente Entrega</td>
+                                <td>
+                                    <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                    <a href="/pages/entregar-celular" class="comprobant2" title="Calcular saldo" data-toggle="tooltip"><i class="fa-solid fa-hand-holding-dollar"></i></a>
+                                </td>
+                            {% else %}
+                                <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td>
+                                <td>
+                                    <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
+                                    <a href="/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="/pages/comprobante-ingreso" class="comprobant1" style="margin-left: 40px;" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                    <a href="/pages/comprobante-entrega" class="comprobant" title="Generar Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
+                                </td>
+                            {% endif %}
+                            <!-- <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
                                 <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <!-- <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
-                            </td>
+                                <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
+                            </td> -->
                         </tr>
-                        <tr>
+                        {% endfor %}
+                        <!-- <tr>
                             <td>2</td>
                             <td>Maria Cardozo</td>
                             <td>Iphone 11</td>
@@ -226,7 +260,7 @@
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
                                 <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <!-- <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
+                                <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
                             </td>
                         </tr>    
                         <tr>
@@ -240,11 +274,11 @@
                             <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td>
                             <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a> -->
+                                <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
                                 <a href="/pages/comprobante-ingreso" class="comprobant1" style="margin-left: 40px;" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
                                 <a href="/pages/comprobante-entrega" class="comprobant" title="Generar Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
                             </td>
-                        </tr>   
+                        </tr>    -->
                     </tbody>
                 </table>
                 
@@ -252,5 +286,5 @@
         </div> 
     </section>
          
-</div>
+<!-- </div> -->
 {% endblock %}

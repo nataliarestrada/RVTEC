@@ -7,10 +7,10 @@ const serviceController = new ServiceController()
 
 
 /*---------Registration View---------*/
-router.get("/registrar_servicio", serviceController.getRegistrationView)
-router.post("/registrar_servicio", serviceController.registerService)
+router.get("/registrar-servicio", serviceController.getRegistrationView)
+router.post("/registrar-servicio", serviceController.registerService)
 
-//router.get("/mostrar_clientes", clientController.getClientsView)
+router.get("/mostrar-servicios", serviceController.getServicesView)
 //router.get("/historial_clientes", clientController.getHistoryView)
 
 module.exports = router

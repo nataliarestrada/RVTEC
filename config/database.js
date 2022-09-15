@@ -25,8 +25,8 @@ const connection = mysql.createConnection({
 
 async function insert(tableName, data){
     try {
-        await query(`INSERT INTO ${tableName}(??) VALUES(?)`,[Object.keys(data), Object.values(data)])
-        return {data, success: true}
+        const resul = await query(`INSERT INTO ${tableName}(??) VALUES(?)`,[Object.keys(data), Object.values(data)])
+        return {id: resul.insertId ,data, success: true}
     } catch(error){
         return {error, success: false}
     }

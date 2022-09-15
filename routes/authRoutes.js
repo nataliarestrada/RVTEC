@@ -13,7 +13,7 @@ router.get("/login",authController.getLoginView)
 router.post("/login",authController.login)
 
 /*---------Logut---------*/
-//router.get("/logout",authController.logOut)
+router.get("/logout",authController.logOut)
 
 /*---------Registration View---------*/
 router.get("/registrar", authController.getRegistrationView)

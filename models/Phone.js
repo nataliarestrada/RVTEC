@@ -33,7 +33,7 @@ class Phone{
     
         this.idPhone = newPhone
         // console.log("En User")
-        // console.log(newUser)
+        //console.log(newPhone)
         return this.idPhone
     }
 
