@@ -79,8 +79,31 @@ class ServiceController{
 
     async getServicesView(req,res){
         const services = await Service.readAll()
-        console.log(services);
+        //console.log(services);
         return res.render("mostrar-servicios.html",{services:services})
+    }
+
+    async putServicesView(req,res){
+        const services = await Service.readAll()
+        //console.log(services);
+        return res.render("editar-servicio.html",{services:services})
+    }
+
+    //cambiar a otro lado
+    getPaymentsView(req,res){
+        return res.render("mostrar-entregas.html")
+    }
+
+    getComprobanteEView(req,res){
+        return res.render("mostrar-comprobante-entrega.html")
+    }
+
+    getComprobanteView(req,res){
+        return res.render("mostrar-comprobante.html")
+    }
+
+    getNotificacionesView(req,res){
+        return res.render("mostrar-notificaciones.html")
     }
 
 }

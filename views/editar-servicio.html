@@ -11,43 +11,60 @@
 
 {% block content %}
 <!-- Contenedor -->
-<div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
-  <div class="container py-3 bg-white " style="width: 95%;border-radius: 15px;">
-      <h3 class="p-1">Modificar Servicio</h3>
+<!-- <div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
+  <div class="container my-3 bg-white " style="width: 95%; height: 86vh; border-radius: 15px; overflow-y: auto;">
+      <h3 class="p-2">Modificar Servicio</h3>
       
       <form action="#" class="m-2">
+        
+        <hr class="dropdown-divider">
+        <h5 class="">Datos del Cliente</h5>
+        
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Nombre</label>
+            <input value="Lisandro Moises" type="text" class="form-control" disabled required>
+          </div>
+          <div class="col">
+            <label class="form-label">Apellido</label>
+            <input value="Tolaba" type="text" class="form-control" disabled required>
+          </div>
+          <div class="col">
+            <label class="form-label">DNI</label>
+            <input value="40666444" type="text" class="form-control" disabled required>
+          </div>
+          <div class="col">
+            <label class="form-label">Número de Contacto</label>
+            <input value="3885234215" type="text" class="form-control" disabled required>
+          </div>
+          <div class="col">
+            <label class="form-label">Número de Respaldo</label>
+            <input value="3884238593" type="text" class="form-control" disabled required>
+          </div>
+        </div>
+
         <hr class="dropdown-divider">
         <h5 class="">Datos Celular</h5>
         <div class="row mb-3">
             <div class="col">
-              <label class="form-label">Cliente asociado <span class="text-secondary">(*)</span></label>
-              <select class="form-select" disabled>
-                  <option selected>1 - Lisandro Moises Tolaba</option>
-                  <option value="1">1 - Lisandro Moises Tolaba</option>
-                  <option value="2">2 - Maria Cardozo</option>
-                  <option value="3">3 - Franco Angel Rodriguez</option>
-              </select>
-            </div>
-            <!-- <div class="col" style="padding-top: 2rem;">
-              <a class="btn btn-success" href="registrar-usuario.html" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
-            </div> -->
-            <div class="col">
-                <label class="form-label">Modelo<span class="text-secondary">(*)</span></label>
-                <input type="text" value="Samsung A20" class="form-control">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-              <label class="form-label">Contraseña<span class="text-secondary">(Opcional)</span> </label>
-              <input type="text" value="12345" class="form-control" >
+              <label class="form-label">Marca<span class="text-secondary">(*)</span></label>
+              <input type="text" value="Samsung" class="form-control">
             </div>
             <div class="col">
-              <label class="form-label">Pin de Seguridad <span class="text-secondary">(Opcional)</span> </label>
+              <label class="form-label">Modelo<span class="text-secondary">(*)</span></label>
+              <input type="text" value="A20" class="form-control">
+            </div>
+            <div class="col">
+              <label class="form-label">Contraseña</label>
+              <input type="text" class="form-control" >
+            </div>
+            <div class="col">
+              <label class="form-label">Pin de Seguridad</label>
+              <input type="text"  class="form-control" >
+            </div>
+            <div class="col">
+              <label class="form-label">Patron </label>
               <input type="text" value="1234" class="form-control" >
-            </div>
-            <div class="col">
-              <label class="form-label">patron<span class="text-secondary">(Opcional)</span> </label>
-              <input type="text" value="1-4-7-8-9" class="form-control" >
             </div>
             <div class="col">
               <img src="/img/matriz3x3_demo.gif" class="rounded" alt="..." width="130">
@@ -55,7 +72,8 @@
         </div>
         <div class="row-7 mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Estado del celular<span class="text-secondary">(*)</span></label>
-            <textarea name="comment" placeholder="se encuentra mojado" va class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <input type="text" value="se encuentra mojado" class="form-control">
+            <!-- <textarea name="comment" placeholder="se encuentra mojado hgf" value="se encuentra mojado" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
         </div>
         <hr class="dropdown-divider">
         <hr class="dropdown-divider">
@@ -63,7 +81,8 @@
         <div class="row mb-3">
           <div class="col">
             <label for="exampleFormControlTextarea1" class="form-label">Diagnostico de la reparacion<span class="text-secondary">(*)</span></label>
-            <textarea name="comment" placeholder="pin de carga no funciona" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <input type="text" value="cambiar pin de carga" class="form-control">
+            <!-- <textarea name="comment" placeholder="pin de carga no funciona" value="pin de carga no funciona" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
           </div>
           <div class="col-6">
             <div class="row mb-3">
@@ -107,7 +126,7 @@
               <select class="form-select" >
                   <option selected>En Proceso</option>
                   <option value="1">En Demora</option>
-                  <option value="2">Para Entrega</option>
+                  <option value="2">Pendiente de Entrega</option>
               </select>
           </div>
           <div class="col">
@@ -136,21 +155,21 @@
             <a class="btn btn-warning btn-lg" href="mostrar-servicios.html" role="button">Modificar</a>
           </div>
         </div> -->
-        <div class="row mb-3">
-          <div class="col-1">
+        <div class="row mb-3 row-cols-auto">
+          <div class="col">
             <div class="mt-3 pt-1">
               <a class="btn btn-warning btn-lg" href="/pages/servicios" role="button">Modificar</a>
             </div>
           </div>
-          <div class="col mx-5">
-            <div class="mt-3 pt-1 ">
+          <div class="col">
+            <div class="mt-3 pt-1">
               <a class="btn btn-secondary btn-lg" href="/pages/servicios" role="button">Cancelar</a>
             </div>
           </div>
         </div>
       </form>
   </div>
-</div>
+<!-- -</div> -->
 
 {% endblock %}
 

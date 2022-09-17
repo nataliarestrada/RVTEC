@@ -125,7 +125,7 @@
 {% endblock %} 
 
 {% block menu %}
-<a class="nav-link text-white-50" aria-current="page" href="#">Inicio <i class="fa-solid fa-angle-right mx-2"></i> Servicio de Reparaciones <i class="fa-solid fa-angle-right mx-2"></i> Ver Reparaciones</a>
+<a class="nav-link text-white-50" aria-current="page" href="#">Inicio <i class="fa-solid fa-angle-right mx-2"></i> Pagos<i class="fa-solid fa-angle-right mx-2"></i> Ver Pagos</a>
 
 {% endblock %}
 
@@ -168,11 +168,11 @@
                         <tr>
                             <th>Codigo</th>
                             <th>Cliente <i class="fa-solid fa-sort"></i></th>
+                            <th>Fecha</th>
+                            <th>Monto</th>
                             <th>Celular <i class="fa-solid fa-sort"></i></th>
-                            <th>Fecha de Entrega</th>
-                            <th>Costo Total</th>
-                            <th>Estado<i class="fa-solid fa-sort"></i></th>
-                            <th>Operaciones</th>
+                            <th>Codigo Servicio<i class="fa-solid fa-sort"></i></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -192,18 +192,34 @@
                             </td>
                         </tr> -->
                         <tr>
-                            <td>2</td>
+                            <td>1</td>
                             <td>Maria Cardozo</td>
-                            <td>Iphone 11</td>
                             <td>29/06/2022</td>
-                            <td>4200</td>
-                            <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td>
-                            <td>
-                                <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
+                            <td>1100</td>
+                            <td>Iphone 11</td>
+                            <td>2  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
+                            <!-- <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td> -->
+                            <!-- <td> -->
+                                <!-- <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a> -->
                                 <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
                                 <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
                                 <a href="/pages/comprobante-entrega" class="comprobant" title="Ver Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
-                            </td>
+                            <!-- </td> -->
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Maria Cardozo</td>
+                            <td>15/07/2022</td>
+                            <td>3000</td>
+                            <td>Iphone 11</td>
+                            <td>2  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
+                            <!-- <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td> -->
+                            <!-- <td> -->
+                                <!-- <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a> -->
+                                <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
+                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a href="/pages/comprobante-entrega" class="comprobant" title="Ver Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
+                            <!-- </td> -->
                         </tr>
                         <!-- <tr>
                             <td>3</td>

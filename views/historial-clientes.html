@@ -141,26 +141,34 @@
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="row">
-                    <div class="col-3">
-                        <label class="form-label mx-5">Cliente</label>
-                        <div class="search-box">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
+                    <form action="/buscar-cliente" class="m-2" method="post">
+                        <div class="row row-cols-auto">
+                            <div class="col">
+                                <div class="d-flex">
+                                    <label class="form-label" style="width: 150px;"> Cliente asociado<span class="text-secondary">(*)</span></label>
+                                    <!-- <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" class="form-control" placeholder="Search&hellip;"> -->
+                                    <div class="search-box mx-1" style="width: 310px;">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <input name="dni" type="text" class="form-control" placeholder="Ingrese DNI&hellip;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-info"><i class="fa-solid fa-magnifying-glass mx-1"></i>Buscar</button>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-outline">Cantidad de Servicios Realizados</button>
+                                    <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-down"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-up"></i></button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col mt-1">
-                        <a class="btn btn-info my-4" href="/pages/historial-lisandro" role="button"><i class="fa-solid fa-magnifying-glass mx-2"></i>Buscar</a>
-                    </div>
-                    <div class="col ">
-                        <div class="btn-group me-2 my-4" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline">Cantidad de Servicios Realizados</button>
-                            <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-down"></i></button>
-                            <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-up"></i></button>
-                        </div>
-                    </div>
+                    </form>  
                 </div>
                 <hr class="dropdown-divider">
-                <ul class="list-group list-group-light">
+                <ul class="list-group list-group-light" style="width: 100%; max-height: 66vh; border-radius: 15px; overflow-y: auto;">
                     <li class="list-group-item px-3 border-0 rounded-3 list-group-item-dark mb-2">
                         <div class="row">
                             <div class="col">

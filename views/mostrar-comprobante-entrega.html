@@ -69,6 +69,9 @@
     table.table td a.view {
         color: #03A9F4;
     }
+    table.table td a.view1 {
+        color: #ebd63a;
+    }
     table.table td a.edit {
         color: #FFC107;
     }
@@ -138,7 +141,7 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-4"><h2>Comprobantes <b>Entrega</b></h2></div>
+                        <div class="col-sm-4"><h2>Comprobantes de <b>Entrega</b></h2></div>
                         <div class="col-sm-2">
                             <a class="btn btn-success" href="/pages/servicios" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
                         </div>
@@ -169,20 +172,22 @@
                             <th>Codigo</th>
                             <th>Cliente <i class="fa-solid fa-sort"></i></th>
                             <th>Celular <i class="fa-solid fa-sort"></i></th>
-                            <th>Estado<i class="fa-solid fa-sort"></i></th>
                             <th>Fecha de emision</th>
+                            <th>Anticipo<i class="fa-solid fa-sort"></i></th>
+                            <th>Codigo Servicio</th>
                             <th>Operaciones</th>
                         </tr>
                     </thead>
-                    <tbody> 
+                    <tbody>
                         <tr>
                             <td>1</td>
                             <td>Maria Cardozo</td>
                             <td>Iphone 11</td>
-                            <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td>
-                            <td>30/05/2022</td>
+                            <td>15/07/2022</td>
+                            <td>3000</td>
+                            <td>2  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
                             <td>
-                                <a href="/pages/ver-comprobante" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
+                                <a href="/pages/ver-comprobante" class="view1" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-file-pdf"></i></a>
                                 <a href="/documents/Comprobante-Entrega-N0XX.pdf" download="Comprobante-Entrega-N0XX" class="comprobant1" title="Descargar" data-toggle="tooltip"><i class="fa-solid fa-download"></i></a>
                                 <a href="#" class="comprobant" title="Imprimir" data-toggle="tooltip"><i class="fa-solid fa-print"></i></a>
                             </td>

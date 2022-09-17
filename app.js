@@ -11,6 +11,7 @@ const addSession = require("./middlewares/addSession")
 const authRoutes = require("./routes/authRoutes")
 const clientRoutes = require("./routes/clientRoutes")
 const serviceRoutes = require("./routes/serviceRoutes")
+const paymentRoutes = require("./routes/paymentRoutes")
 
 const app = express()
 
@@ -35,6 +36,7 @@ app.use(addSession);
 app.use(authRoutes)
 app.use(clientRoutes)
 app.use(serviceRoutes)
+app.use(paymentRoutes)
 
 // nunjucks.configure('views', {
 //     autoescape: true,
