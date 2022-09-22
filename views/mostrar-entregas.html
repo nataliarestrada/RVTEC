@@ -4,11 +4,11 @@
 <style>
         
     .table-responsive {
-        padding: 50px 30px;
+        padding: 50px 100px;
         
     }
     .table-wrapper {
-        min-width: 1000px;
+        min-width: 800px;
         background: #fff;
         padding: 20px;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -59,7 +59,7 @@
         cursor: pointer;
     }
     table.table td:last-child {
-        width: 150px;
+        width: 160px;
     }
     table.table td a {
         color: #a0a5b1;
@@ -131,7 +131,7 @@
 
 {% block content %}
 <!-- Contenedor -->
-<div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;">
+<!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
                     
     <section class="">
         <div class="table-responsive">
@@ -144,8 +144,6 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex">
-                                <!-- <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;"> -->
                                 <div class="search-box mx-1">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                     <input type="text" class="form-control" placeholder="Search&hellip;">
@@ -166,76 +164,27 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
-                            <th>Cliente <i class="fa-solid fa-sort"></i></th>
+                            <th>Codigo<i class="fa-solid fa-sort"></i></th>
+                            <th>Cliente</th>
+                            <th>Celular</th>
                             <th>Fecha</th>
                             <th>Monto</th>
-                            <th>Celular <i class="fa-solid fa-sort"></i></th>
                             <th>Codigo Servicio<i class="fa-solid fa-sort"></i></th>
-                            
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td>1</td>
-                            <td>Lisandro Moises Tolaba</td>
-                            <td>Samsung A20</td>
-                            <td>20/05/2022</td>
-                            <td>30/05/2022</td>
-                            <td>-</td>
-                            <td>Ingresado</td>
-                            <td>
-                                <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
-                            </td>
-                        </tr> -->
+                        {% for payment in payments %}
                         <tr>
-                            <td>1</td>
-                            <td>Maria Cardozo</td>
-                            <td>29/06/2022</td>
-                            <td>1100</td>
-                            <td>Iphone 11</td>
-                            <td>2  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
-                            <!-- <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td> -->
-                            <!-- <td> -->
-                                <!-- <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a> -->
-                                <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <a href="/pages/comprobante-entrega" class="comprobant" title="Ver Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
-                            <!-- </td> -->
+                            <td>{{payment.idPayment}}</td>
+                            <td>{{payment.name}} {{payment.surname}}</td>
+                            <td>{{payment.marca}} {{payment.model}}</td>
+                            <td>{{payment.date | date("D/M/Y")}}</td>
+                            <td>{{payment.cost}}</td>
+                            <td>{{payment.idService}}  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
+                            
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Maria Cardozo</td>
-                            <td>15/07/2022</td>
-                            <td>3000</td>
-                            <td>Iphone 11</td>
-                            <td>2  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
-                            <!-- <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td> -->
-                            <!-- <td> -->
-                                <!-- <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a> -->
-                                <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <a href="/pages/comprobante-entrega" class="comprobant" title="Ver Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
-                            <!-- </td> -->
-                        </tr>
-                        <!-- <tr>
-                            <td>3</td>
-                            <td>Franco Angel Rodriguez</td>
-                            <td>Motorola G30</td>
-                            <td>23/05/2022</td>
-                            <td>25/05/2022</td>
-                            <td>-</td>
-                            <td>Demorado</td>
-                            <td>
-                                <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
-                                <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                
-                            </td>
-                        </tr>       -->
+                        {% endfor %}
+                       
                     </tbody>
                 </table>
                 
@@ -243,5 +192,5 @@
         </div> 
     </section>
          
-</div>
+<!-- </div> -->
 {% endblock %}

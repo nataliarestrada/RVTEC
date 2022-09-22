@@ -67,7 +67,7 @@ class ServiceController{
                 if(validationPayment.success){
                     const payment = await newPayment.save()
 
-                    return res.redirect("/home")
+                    return res.redirect("/mostrar-servicios")
 
                 }
 
@@ -79,8 +79,36 @@ class ServiceController{
 
     async getServicesView(req,res){
         const services = await Service.readAll()
-        //console.log(services);
+    
         return res.render("mostrar-servicios.html",{services:services})
+    }
+
+    async recordDelivery(req,res){
+        //registrar pago
+        const fecha = Date.now();
+        const hoy = new Date(fecha);
+        const pay = {
+            idService: req.body.idService,
+            cost: req.body.cost,
+            date: hoy
+        }
+        const newPayment = new Payment(pay)
+        const validationPayment = newPayment.validate()
+
+        if(validationPayment.success){
+            //await newPayment.save()
+            
+            const service = await Service.readOne(req.body.idService)
+            service[0].endDate = hoy
+            service[0].idState = 4 //estado ENTREGADO
+            const updatedService = new Service(service[0]);
+            updatedService.idService = service[0].idService;
+            await updatedService.update(updatedService);
+
+            return res.redirect("/mostrar-servicios")
+        }
+
+        return res.redirect("/home")
     }
 
     async putServicesView(req,res){
@@ -90,9 +118,7 @@ class ServiceController{
     }
 
     //cambiar a otro lado
-    getPaymentsView(req,res){
-        return res.render("mostrar-entregas.html")
-    }
+    
 
     getComprobanteEView(req,res){
         return res.render("mostrar-comprobante-entrega.html")

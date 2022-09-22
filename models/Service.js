@@ -18,11 +18,15 @@ class Service{
  //El metodo puede ser utilizado sin crear una instancia
     static async readAll(){
         //return await query("SELECT * FROM services")
-        return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, payments.cost FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService")
+        return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, payments.cost, (services.costService - payments.cost) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService")
     }
 
     static async readOne(id){
         return await query("SELECT * FROM services WHERE idService = ?", [id])
+    }
+
+    static async delivery(id){
+        return await query("UPDATE services SET `idState` = '4' WHERE idService = ?", [id])
     }
 
     async save(){

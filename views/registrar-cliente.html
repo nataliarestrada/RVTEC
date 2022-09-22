@@ -10,72 +10,61 @@
 {% endblock %}
 
 {% block content %}
-<!-- Contenedor -->
-<!-- <div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
-    <section>
-      <div class="container py-5 h-100">
-        <div class="row justify-content-center align-items-center h-100">
-          <div class="col-12 col-lg-9 col-xl-7">
-            <div class="card" style="border-radius: 15px;">
-              <div class="card-body p-md-3">
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registrar Cliente</h3>
-                <form action="/registrar-cliente" method="post" class="m-4">
-                  <div class="row mb-3">
-                      <div class="col">
-                          <label class="form-label">Nombres <span class="text-secondary">(*)</span></label>
-                          <input name="name" type="text" class="form-control">
-                      </div>
-                      <div class="col">
-                          <label class="form-label">Apellido <span class="text-secondary">(*)</span></label>
-                          <input name="surname" type="text" class="form-control">
-                      </div>
+<section>
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-md-3">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registrar Cliente</h3>
+            <form action="/registrar-cliente" method="post" class="m-4">
+              <div class="row mb-3">
+                  <div class="col">
+                      <label class="form-label">Nombres <span class="text-secondary">(*)</span></label>
+                      <input name="name" type="text" class="form-control" required>
                   </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <label class="form-label">Correo electronico <span class="text-secondary">(opcional)</span> </label>
-                      <input name="email" type="email" class="form-control" placeholder="">
-                    </div>
-                    <div class="col">
-                      <label class="form-label">DNI<span class="text-secondary"></span>(*) </label>
-                      <input name="dni" type="number" class="form-control" placeholder="">
-                    </div>
+                  <div class="col">
+                      <label class="form-label">Apellido <span class="text-secondary">(*)</span></label>
+                      <input name="surname" type="text" class="form-control" required>
                   </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <label class="form-label">Numero de Contacto <span class="text-secondary">(*)</span></label>
-                      <input name="contact" type="text" class="form-control" placeholder="(388)">
-                    </div>
-                    <div class="col">
-                      <label class="form-label">Numero de Respaldo <span class="text-secondary">(*)</span> </label>
-                      <input name="backup" type="Text" class="form-control" placeholder="(388)">
-                    </div>
-                  </div>
-                  <!-- <div class="mb-3">
-                      <label class="form-label">Numero de Contacto</label>
-                      <input type="text" class="form-control" placeholder="(388)">
-                  </div>
-                  <div class="mb-3">
-                      <label class="form-label">Numero de Respaldo <span class="text-secondary">(*)</span> </label>
-                      <input type="Text" class="form-control" placeholder="(388)">
-                  </div> -->
-                  <div class="row mb-3 row-cols-auto">
-                    <div class="col">
-                      <div class="mt-3 pt-1">
-                        <button class="btn btn-primary btn-lg" >Guardar</button>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="mt-3 pt-1">
-                        <a class="btn btn-secondary btn-lg" href="/home" role="button">Cancelar</a>
-                      </div>
-                    </div>
-                  </div>
-              </form>
               </div>
-            </div>
+              <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label">Correo electronico <span class="text-secondary">(opcional)</span> </label>
+                  <input name="email" type="email" class="form-control" placeholder="">
+                </div>
+                <div class="col">
+                  <label class="form-label">DNI<span class="text-secondary"></span>(*) </label>
+                  <input name="dni" type="number" class="form-control" placeholder="" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label">Numero de Contacto <span class="text-secondary">(*)</span></label>
+                  <input name="contact" type="text" class="form-control" placeholder="(388)" required>
+                </div>
+                <div class="col">
+                  <label class="form-label">Numero de Respaldo <span class="text-secondary">(*)</span> </label>
+                  <input name="backup" type="Text" class="form-control" placeholder="(388)" required>
+                </div>
+              </div>
+              <div class="row mb-3 row-cols-auto">
+                <div class="col">
+                  <div class="mt-3 pt-1">
+                    <button class="btn btn-lg text-white" style="background: #25527B ;" >Guardar</button>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mt-3 pt-1">
+                    <a class="btn btn-secondary btn-lg" href="/home" role="button">Cancelar</a>
+                  </div>
+                </div>
+              </div>
+          </form>
           </div>
         </div>
       </div>
-    </section>
-  <!-- </div> -->
+    </div>
+  </div>
+</section>
 {% endblock %}

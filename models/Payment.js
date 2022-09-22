@@ -10,7 +10,7 @@ class Payment{
 
  //El metodo puede ser utilizado sin crear una instancia
     static async readAll(){
-        return await query("SELECT * FROM payments")
+        return await query("SELECT payments.*, clients.name, clients.surname, phones.marca, phones.model FROM services, clients, phones, payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService")
     }
 
     static async readOne(id){

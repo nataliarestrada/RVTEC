@@ -11,9 +11,10 @@ router.get("/registrar-servicio", serviceController.getRegistrationView)
 router.post("/registrar-servicio", serviceController.registerService)
 
 router.get("/mostrar-servicios", serviceController.getServicesView)
+router.post("/registrar-entrega", serviceController.recordDelivery)
 router.get("/editar-servicio", serviceController.putServicesView)
 
-router.get("/mostrar-pagos", serviceController.getPaymentsView)
+
 router.get("/mostrar-combrobante", serviceController.getComprobanteView)
 router.get("/mostrar-combrobante-entrega", serviceController.getComprobanteEView)
 router.get("/mostrar-notificaciones", serviceController.getNotificacionesView)
