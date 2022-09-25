@@ -3,6 +3,7 @@ const Client = require("../models/Client")
 const User = require("../models/User")
 const Phone = require("../models/Phone")
 const Payment = require("../models/Payment")
+const sendMessage = require("../controllers/messageController")
 class ServiceController{
     
     async getRegistrationView(req,res){
@@ -117,6 +118,7 @@ class ServiceController{
     }
 
     async editService(req,res){
+
         const phone = {
             idPhone: req.body.idPhone,
             marca: req.body.marca,
@@ -140,12 +142,21 @@ class ServiceController{
         const updateService = new Service(service[0]);
         updateService.idService = req.params.idService;
         await updateService.update(updateService)
-    
+        
+        const client = await Client.readOne(service[0].idClient)
+
         if (req.body.notify) {
-            console.log(req.body.notify);
-        }
-        else{
-            console.log("Pues no esta notify");
+            let message
+            if (service[0].idState === 1) {
+                message = "Estado del servicio: En proceso. Motivo: " + service[0].description  
+            }
+            if (service[0].idState === 2) {
+                message = "Estado del servicio: En demora. Motivo: " + service[0].description  
+            }
+            if (service[0].idState === 3) {
+                message = "Estado del servicio: Para entregar. Motivo: " + service[0].description  
+            }
+            await sendMessage(client[0].contact, message)
         }
 
         return res.redirect("/mostrar-servicios");
