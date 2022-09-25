@@ -112,9 +112,44 @@ class ServiceController{
     }
 
     async putServicesView(req,res){
-        const services = await Service.readAll()
-        //console.log(services);
-        return res.render("editar-servicio.html",{services:services})
+        const service = await Service.editService(req.params.idService)
+        return res.render("editar-servicio.html", {service:service[0]})
+    }
+
+    async editService(req,res){
+        const phone = {
+            idPhone: req.body.idPhone,
+            marca: req.body.marca,
+            model: req.body.model,
+            password: req.body.password,
+            pin: req.body.pin,
+            patron: req.body.patron,
+            state: req.body.state,
+        }
+
+        const updatePhone = new Phone(phone);
+        updatePhone.idPhone = phone.idPhone;
+        await updatePhone.update(updatePhone);
+
+        const service = await Service.readOne(req.params.idService);
+        service[0].diagnostic = req.body.diagnostic;
+        service[0].costService = parseInt(req.body.costService);
+        service[0].idState = parseInt(req.body.stateService);
+        service[0].description = req.body.description;
+
+        const updateService = new Service(service[0]);
+        updateService.idService = req.params.idService;
+        await updateService.update(updateService)
+    
+        if (req.body.notify) {
+            console.log(req.body.notify);
+        }
+        else{
+            console.log("Pues no esta notify");
+        }
+
+        return res.redirect("/mostrar-servicios");
+
     }
 
     //cambiar a otro lado

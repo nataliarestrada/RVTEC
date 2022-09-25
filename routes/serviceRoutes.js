@@ -12,7 +12,8 @@ router.post("/registrar-servicio", serviceController.registerService)
 
 router.get("/mostrar-servicios", serviceController.getServicesView)
 router.post("/registrar-entrega", serviceController.recordDelivery)
-router.get("/editar-servicio", serviceController.putServicesView)
+router.get("/editar-servicio/:idService", serviceController.putServicesView)
+router.post("/editar-servicio/:idService", serviceController.editService)
 
 
 router.get("/mostrar-combrobante", serviceController.getComprobanteView)

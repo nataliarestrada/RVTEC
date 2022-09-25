@@ -21,6 +21,10 @@ class Service{
         return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, payments.cost, (services.costService - payments.cost) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService")
     }
 
+    static async editService(idService){
+        return await query("SELECT services.*, clients.*, phones.*, payments.cost, (services.costService - payments.cost) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService AND services.idService = " + idService)
+    }
+
     static async readOne(id){
         return await query("SELECT * FROM services WHERE idService = ?", [id])
     }
