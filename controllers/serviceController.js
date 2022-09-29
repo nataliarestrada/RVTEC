@@ -59,15 +59,17 @@ class ServiceController{
                 const pay = {
                     idService: idService,
                     cost: req.body.cost,
-                    date: hoy
+                    date: hoy,
+                    typePayment: 1
                 }
 
                 const newPayment = new Payment(pay)
+                
                 const validationPayment = newPayment.validate()
-
+            
                 if(validationPayment.success){
                     const payment = await newPayment.save()
-
+                    
                     return res.redirect("/mostrar-servicios")
 
                 }
@@ -91,13 +93,14 @@ class ServiceController{
         const pay = {
             idService: req.body.idService,
             cost: req.body.cost,
-            date: hoy
+            date: hoy,
+            typePayment: 2
         }
         const newPayment = new Payment(pay)
         const validationPayment = newPayment.validate()
 
         if(validationPayment.success){
-            //await newPayment.save()
+            await newPayment.save()
             
             const service = await Service.readOne(req.body.idService)
             service[0].endDate = hoy
@@ -156,17 +159,11 @@ class ServiceController{
             if (service[0].idState === 3) {
                 message = "Estado del servicio: Para entregar. Motivo: " + service[0].description  
             }
-            await sendMessage(client[0].contact, message)
+            await sendMessage(client[0].contact, message, service[0].idService)
         }
 
         return res.redirect("/mostrar-servicios");
 
-    }
-
-    //cambiar a otro lado
-
-    getNotificacionesView(req,res){
-        return res.render("mostrar-notificaciones.html")
     }
 
 }

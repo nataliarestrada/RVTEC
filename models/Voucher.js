@@ -5,7 +5,7 @@ class Voucher{
     constructor(voucher){
         this.idService = voucher.idService
         this.type = voucher.type
-        this.creatDate = voucher.creatDate
+        this.createDate = voucher.createDate
         this.content = voucher.content
     }
 
@@ -18,12 +18,16 @@ class Voucher{
         return await query("SELECT * FROM vouchers WHERE idVoucher= ?", [id])
     }
 
+    static async readVoucher(type){
+        return await query("SELECT clients.name, clients.surname, phones.marca, phones.model, payments.cost, vouchers.* FROM vouchers, clients, phones, payments, services WHERE vouchers.idService = services.idService AND payments.idService = services.idService AND services.idClient = clients.idClient AND services.idPhone = phones.idPhone AND payments.typePayment = ? AND vouchers.type= ?", [type, type])
+    }
+
     async save(){
     
         const newVoucher = await insert("vouchers",{
             idService: this.idService,
             type: this.type,
-            creatDate: this.creatDate,
+            createDate: this.createDate,
             content: this.content,
         })
     
@@ -49,7 +53,7 @@ class Voucher{
 
     validate(){
         let result = {success: true, errors: []}
-        if(!(this.idService && this.type && this.creatDate)){
+        if(!(this.idService && this.type && this.createDate)){
             result.success = false
             result.errors.push("Rellena todos los campos")
         }

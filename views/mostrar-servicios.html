@@ -191,21 +191,21 @@
                             <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="/editar-servicio/{{service.idService}}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a href="/generar-comprobante-recepcion/{{service.idService}}" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
                             </td>
                         {% elif service.idState == 2 %}
                             <td class="bg-warning bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Demora</td>
                             <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="/editar-servicio/{{service.idService}}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a href="/generar-comprobante-recepcion/{{service.idService}}" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
                             </td>
                         {% elif service.idState == 3 %}
                             <td class="bg-success bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Pendiente de Entrega</td>
                             <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="/editar-servicio/{{service.idService}}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a href="/generar-comprobante-recepcion/{{service.idService}}" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
                                 <!-- Button trigger modal -->
                                 <a type="button" class="comprobant2" title="Calcular saldo" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-hand-holding-dollar"></i></a>
                                 <!-- Modal -->
@@ -308,8 +308,8 @@
                             <td>
                                 <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a>
                                 <a href="/editar-servicio/{{service.idService}}" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <a href="/pages/comprobante-entrega" class="comprobant" title="Generar Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
+                                <!-- <a href="/generar-comprobante-recepcion/{{service.idService}}" class="comprobant1" title="Generar Comprobante de Recepcion" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a> -->
+                                <a href="/generar-comprobante-entrega/{{service.idService}}" class="comprobant" title="Generar Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a>
                             </td>
                         {% endif %}
                     </tr>

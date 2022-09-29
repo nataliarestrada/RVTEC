@@ -15,7 +15,6 @@ router.post("/registrar-entrega", serviceController.recordDelivery)
 router.get("/editar-servicio/:idService", serviceController.putServicesView)
 router.post("/editar-servicio/:idService", serviceController.editService)
 
-router.get("/mostrar-notificaciones", serviceController.getNotificacionesView)
 
 
 module.exports = router

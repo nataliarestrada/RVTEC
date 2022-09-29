@@ -16,6 +16,10 @@ class Client{
     static async readAll(){
         return await query("SELECT * FROM clients")
     }
+
+    static async readClientsServices(){
+        return await query("SELECT clients.*, COUNT(services.idClient) AS 'cantidad' FROM clients LEFT JOIN services ON clients.idClient = services.idClient GROUP BY clients.idClient")
+    }
     
     static async readOne(idClient){
         return await query("SELECT * FROM clients WHERE idClient = ?", [idClient])

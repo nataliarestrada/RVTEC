@@ -12,6 +12,8 @@ const authRoutes = require("./routes/authRoutes")
 const clientRoutes = require("./routes/clientRoutes")
 const serviceRoutes = require("./routes/serviceRoutes")
 const paymentRoutes = require("./routes/paymentRoutes")
+const voucherRoutes = require("./routes/voucherRoutes")
+const notificationRoutes = require("./routes/notificationRoutes")
 
 const app = express()
 
@@ -37,6 +39,8 @@ app.use(authRoutes)
 app.use(clientRoutes)
 app.use(serviceRoutes)
 app.use(paymentRoutes)
+app.use(voucherRoutes)
+app.use(notificationRoutes)
 
 // nunjucks.configure('views', {
 //     autoescape: true,

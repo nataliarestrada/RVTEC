@@ -18,7 +18,7 @@ class Service{
  //El metodo puede ser utilizado sin crear una instancia
     static async readAll(){
         //return await query("SELECT * FROM services")
-        return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, payments.cost, (services.costService - payments.cost) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService")
+        return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, SUM(payments.cost) AS 'cost', (services.costService - SUM(payments.cost)) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService GROUP BY services.idService")
     }
 
     static async editService(idService){

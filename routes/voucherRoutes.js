@@ -6,8 +6,11 @@ const router = express.Router()
 const voucherController = new VoucherController()
 
 
-router.get("/mostrar-combrobante", voucherController.getComprobanteView)
-router.get("/mostrar-combrobante-entrega", voucherController.getComprobanteEView)
+router.get("/mostrar-comprobante", voucherController.getComprobanteView)
+router.get("/mostrar-comprobante-entrega", voucherController.getComprobanteEView)
+
+router.get("/generar-comprobante-recepcion/:idService", voucherController.registrarComprobanteRecepcion)
+router.get("/generar-comprobante-entrega/:idService", voucherController.registrarComprobanteEntrega)
 
 
 module.exports = router

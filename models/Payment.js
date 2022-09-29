@@ -6,6 +6,7 @@ class Payment{
         this.idService = payment.idService
         this.cost = payment.cost
         this.date = payment.date
+        this.typePayment = payment.typePayment
     }
 
  //El metodo puede ser utilizado sin crear una instancia
@@ -23,6 +24,7 @@ class Payment{
             idService: this.idService,
             cost: this.cost,
             date: this.date,
+            typePayment: this.typePayment
         })
     
         this.idPayment = newPayment
@@ -47,7 +49,7 @@ class Payment{
 
     validate(){
         let result = {success: true, errors: []}
-        if(!(this.idService && this.cost && this.date)){
+        if(!(this.idService && this.cost && this.date && this.typePayment)){
             result.success = false
             result.errors.push("Rellena todos los campos")
         }

@@ -177,37 +177,32 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for n in notifications %}
                         <tr>
-                            <td>1</td>
-                            <td>Lisandro Moises Tolaba</td>
-                            <td>3885892376  3884129845</td>
-                            <td>Samsung A20</td>
-                            <td class="bg-warning bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Demora</td>
-                            <td>No se encuentran repuestos</td>
-                            <td>20/05/2022</td>
+                            <td>{{n.idNotification}}</td>
+                            <td>{{n.name}} {{n.surname}}</td>
+                            <td>{{n.contact}} - {{n.backup}}</td>
+                            <td>{{n.marca}} {{n.model}}</td>
+                            {% if n.idState == 1 %}
+                                <td class="bg-info bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Proceso</td>
+                            {% elif n.idState == 2 %}
+                                <td class="bg-warning bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Demora</td>
+                            {% elif n.idState == 3 %}
+                                <td class="bg-success bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Pendiente de Entrega</td>
+                            {% elif n.idState == 4 %}
+                                <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td>
+                            {% endif %}
+                            <td>{{n.message}}</td>
+                            <td>{{n.datetime | date('D/M/Y hh:mm:ss')}}</td>
                             <td>
-                                <a href="#" class="view" title="Reenviar" data-toggle="tooltip"><i class="fa-solid fa-share"></i></a>
+                                <a href="/resend-notification/{{n.idNotification}}" class="view" title="Reenviar" data-toggle="tooltip"><i class="fa-solid fa-share"></i></a>
                                 <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
                                 <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
                                 <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
                             </td>
                         </tr>
-                        
-                        <tr>
-                            <td>3</td>
-                            <td>Franco Angel Rodriguez</td>
-                            <td>3886459867  3885120945</td>
-                            <td>Motorola G30</td>
-                            <td class="bg-success bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Para Entrega</td>
-                            <td>Se realizo la reparacion del pin de carga, puede pasar por el local a retirar su celular</td>
-                            <td>25/05/2022</td>
-                            <td>
-                                <a href="#" class="view" title="Reenviar" data-toggle="tooltip"><i class="fa-solid fa-share"></i></a>
-                                <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a> -->
-                                
-                            </td>
-                        </tr>      
+                        {% endfor %}
+         
                     </tbody>
                 </table>
                 
