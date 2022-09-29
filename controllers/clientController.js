@@ -41,7 +41,7 @@ class ClientController{
 
     async getHistoryView(req,res){
         const clients = await Client.readAll()
-        console.log(clients);
+        //console.log(clients);
         return res.render("historial-clientes.html",{clients:clients})
     }
 }

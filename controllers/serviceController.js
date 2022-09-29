@@ -164,15 +164,6 @@ class ServiceController{
     }
 
     //cambiar a otro lado
-    
-
-    getComprobanteEView(req,res){
-        return res.render("mostrar-comprobante-entrega.html")
-    }
-
-    getComprobanteView(req,res){
-        return res.render("mostrar-comprobante.html")
-    }
 
     getNotificacionesView(req,res){
         return res.render("mostrar-notificaciones.html")
