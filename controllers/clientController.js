@@ -1,4 +1,5 @@
 const Client = require("../models/Client")
+const Service = require("../models/Service")
 const User = require("../models/User")
 class ClientController{
     async getRegistrationView(req,res){
@@ -40,9 +41,10 @@ class ClientController{
     }
 
     async getHistoryView(req,res){
-        const clients = await Client.readAll()
+        const clients = await Client.readClientsServices()
+        const services = await Service.readAll()
         //console.log(clients);
-        return res.render("historial-clientes.html",{clients:clients})
+        return res.render("historial-clientes.html",{clients:clients, services:services})
     }
 }
 

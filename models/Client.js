@@ -18,7 +18,7 @@ class Client{
     }
 
     static async readClientsServices(){
-        return await query("SELECT clients.*, COUNT(services.idClient) AS 'cantidad' FROM clients LEFT JOIN services ON clients.idClient = services.idClient GROUP BY clients.idClient")
+        return await query("SELECT clients.*, COUNT(services.idClient) AS 'cantidad' FROM clients LEFT JOIN services ON clients.idClient = services.idClient GROUP BY clients.idClient ORDER BY cantidad DESC")
     }
     
     static async readOne(idClient){
