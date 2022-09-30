@@ -4,7 +4,8 @@ class AuthController{
     async getWelcomeView(req, res){
         const data = await User.readAll();
         if (data[0]) {
-            return res.render("login.html")
+
+            return res.render("login.html",{success:true})
         }
         else {
             return res.render("bienvenida.html")
@@ -18,21 +19,25 @@ class AuthController{
 
     getLoginView(req,res){
 
-        return res.render("login.html")
+        return res.render("login.html",{success:true})
+    }
+    getLoginFirstView(req,res){
+        const msj="Usuario registrado correctamente"
+        return res.render("login.html",{msj:msj, success:true})
     }
 
     getRegistrationView(req,res){
-        return res.render("registrar.html")
+        return res.render("registrar.html",{success:true})
     }
 
     async login(req, res){
         const userCredential = req.body
         const user = await User.readByEmail(userCredential.email)
         if(user.length === 0){
-            return res.render("login.html")
+            return res.render("login.html",{success:false, errors:"Credenciales incorrectas"})
         }
         if(user[0].password !== userCredential.password){
-            return res.render("login.html")
+            return res.render("login.html",{success:false, errors:"Credenciales incorrectas"})
         }    
        
         req.session.loggedIn = true
@@ -49,17 +54,17 @@ class AuthController{
     }
     
     async signUp(req,res){
-        console.log(req.body);
+        //console.log(req.body);
         const newUser = new User(req.body)
         const validation = newUser.validate()
 
         if(validation.success){
             await newUser.save()
-            
-            return res.redirect("/login")
+
+            return res.redirect("/login-first")
         }
         
-        return res.render("registrar.html")
+        return res.render("registrar.html",{success:validation.success, errors:validation.errors[0]})
     }
 
      

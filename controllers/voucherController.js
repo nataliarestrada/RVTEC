@@ -1,7 +1,3 @@
-const Service = require("../models/Service")
-const Client = require("../models/Client")
-const User = require("../models/User")
-const Phone = require("../models/Phone")
 const Voucher = require("../models/Voucher")
 class VoucherController{
     
@@ -29,7 +25,7 @@ class VoucherController{
         }
         const newVoucher = new Voucher(data)
         const result = await newVoucher.save()
-        console.log(result);
+        // console.log(result);
 
         return res.redirect("/mostrar-comprobante")
     }
@@ -46,7 +42,22 @@ class VoucherController{
         const newVoucher = new Voucher(data)
         const result = await newVoucher.save()
 
+
         return res.redirect("/mostrar-comprobante-entrega")
+    }
+
+    getViewVoucher(req,res){
+        return res.render("ver-comprobante.html")
+    }
+    //informes
+    getICelularView(req,res){
+        return res.render("extra-informe-celulares.html")
+    }
+    getIClienteView(req,res){
+        return res.render("extra-informe-clientes.html")
+    }
+    getIPagoView(req,res){
+        return res.render("extra-informe-pagos.html")
     }
 
 

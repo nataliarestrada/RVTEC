@@ -9,6 +9,7 @@ router.get("/", authController.getWelcomeView)
 router.get("/home", authController.getHomeView)
   
 /*---------Login View---------*/
+router.get("/login-first",authController.getLoginFirstView)
 router.get("/login",authController.getLoginView)
 router.post("/login",authController.login)
 

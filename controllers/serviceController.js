@@ -70,14 +70,15 @@ class ServiceController{
                 if(validationPayment.success){
                     const payment = await newPayment.save()
                     
-                    return res.redirect("/mostrar-servicios")
+                    //return res.redirect("/mostrar-servicios")
+                    return res.render("registrar-servicio.html",{msj:"Servicio de Reparacion registrado exitosamente"})
 
                 }
 
             }
         }
         
-        return res.render("registrar-servicio.html")
+        return res.render("registrar-servicio.html",{errors:"Error al registrar"})
     }
 
     async getServicesView(req,res){
@@ -151,16 +152,17 @@ class ServiceController{
         if (req.body.notify) {
             let message
             if (service[0].idState === 1) {
-                message = "Estado del servicio: En proceso. Motivo: " + service[0].description  
+                message = "Tu dispositivo 📱 se encuentra En Proceso de Reparacion 🛠.\n Observacion:" + service[0].description 
             }
             if (service[0].idState === 2) {
-                message = "Estado del servicio: En demora. Motivo: " + service[0].description  
+                message = "La reparacion de tu dispositivo 📱 se encuentra En Demora ⏰.\n Motivo: " + service[0].description  
             }
             if (service[0].idState === 3) {
-                message = "Estado del servicio: Para entregar. Motivo: " + service[0].description  
+                message = "La reparacion de tu dispositivo 📱 ha finalizado, puedes pasar por el local para retirarlo 📦😀. \n Observacion: " + service[0].description  
             }
             await sendMessage(client[0].contact, message, service[0].idService)
         }
+        
 
         return res.redirect("/mostrar-servicios");
 

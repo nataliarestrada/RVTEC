@@ -17,10 +17,11 @@ class ClientController{
         if(validation.success){
             await newClient.save()
             
-            return res.redirect("/home")
+            // return res.redirect("/home")7
+            return res.render("registrar-cliente.html",{msj:"Cliente registrado exitosamente"})
         }
         
-        return res.render("registrar-cliente.html")
+        return res.render("registrar-cliente.html",{error:"Error al registrar"})
     }
 
     async getClientsView(req,res){

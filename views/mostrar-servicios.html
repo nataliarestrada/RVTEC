@@ -171,7 +171,7 @@
                         <th>Fecha de ingreso</th>
                         <th>Diagnostico</th>
                         <th>Costo Reparacion</th>
-                        <th>Anticipo</th>
+                        <th>Monto Pagado</th>
                         <th>Estado<i class="fa-solid fa-sort"></i></th>
                         <th>Operaciones</th>
                     </tr>
@@ -184,8 +184,8 @@
                         <td>{{service.marca}} {{service.model}}</td>
                         <td>{{service.startDate | date("D/M/Y")}}</td>
                         <td>{{service.diagnostic}}</td>
-                        <td>{{service.costService}}</td>
-                        <td>{{service.cost}}</td>
+                        <td>${{service.costService}}</td>
+                        <td>${{service.cost}}</td>
                         {% if service.idState == 1 %}
                             <td class="bg-info bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Proceso</td>
                             <td>

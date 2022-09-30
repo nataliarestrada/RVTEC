@@ -131,8 +131,7 @@
 
 {% block content %}
 <!-- Contenedor -->
-<!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
-                    
+                  
     <section class="">
         <div class="table-responsive">
             <div class="table-wrapper">
@@ -169,6 +168,7 @@
                             <th>Celular</th>
                             <th>Fecha</th>
                             <th>Monto</th>
+                            <th>Observacion</th>
                             <th>Codigo Servicio<i class="fa-solid fa-sort"></i></th>
                         </tr>
                     </thead>
@@ -179,7 +179,12 @@
                             <td>{{payment.name}} {{payment.surname}}</td>
                             <td>{{payment.marca}} {{payment.model}}</td>
                             <td>{{payment.date | date("D/M/Y")}}</td>
-                            <td>{{payment.cost}}</td>
+                            <td>${{payment.cost}}</td>
+                            {% if payment.typePayment == 1 %} 
+                            <td>Pago del Anticipo</td>
+                            {% elif payment.typePayment == 2 %}
+                            <td>Pago Saldo restante para Entrega</td>
+                            {% endif %}
                             <td>{{payment.idService}}  <a href="#" class="view" title="Ver" data-toggle="tooltip"><i class="fa-solid fa-eye"></i></a></td>
                             
                         </tr>
@@ -191,6 +196,5 @@
             </div>
         </div> 
     </section>
-         
-<!-- </div> -->
+
 {% endblock %}

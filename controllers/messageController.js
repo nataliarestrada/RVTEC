@@ -14,7 +14,7 @@ async function sendMessage(number, message, idService){
         });
         const hoy = Date.now();
         const fecha = new Date(hoy);
-        const fechayhora = fecha.toLocaleString()
+        //const fechayhora = fecha.toLocaleString()
 
         const data = {
             idService: idService,

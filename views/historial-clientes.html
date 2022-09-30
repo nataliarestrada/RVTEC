@@ -138,9 +138,8 @@
 
 {% block content %}
 <!-- Contenedor -->
-<!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
                     
-    <section class="">
+    <section class="" >
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="row">
@@ -149,8 +148,6 @@
                             <div class="col">
                                 <div class="d-flex">
                                     <label class="form-label" style="width: 150px;"> Cliente asociado<span class="text-secondary">(*)</span></label>
-                                    <!-- <i class="fa-solid fa-magnifying-glass"></i>
-                                    <input type="text" class="form-control" placeholder="Search&hellip;"> -->
                                     <div class="search-box mx-1" style="width: 310px;">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                         <input name="dni" type="text" class="form-control" placeholder="Ingrese DNI&hellip;">
@@ -197,7 +194,7 @@
                                                     <th>Fecha de ingreso</th>
                                                     <th>Diagnostico</th>
                                                     <th>Costo Reparacion</th>
-                                                    <th>Anticipo</th>
+                                                    <th>Monto Pagado</th>
                                                     <th>Estado<i class="fa-solid fa-sort"></i></th>
                                                     <th>Operaciones</th>
                                                 </tr>
@@ -211,8 +208,8 @@
                                                             <td>{{service.marca}} {{service.model}}</td>
                                                             <td>{{service.startDate | date("D/M/Y")}}</td>
                                                             <td>{{service.diagnostic}}</td>
-                                                            <td>{{service.costService}}</td>
-                                                            <td>{{service.cost}}</td>
+                                                            <td>${{service.costService}}</td>
+                                                            <td>${{service.cost}}</td>
                                                             {% if service.idState == 1 %}
                                                                 <td class="bg-info bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Proceso</td>
                                                                 <td>
@@ -354,6 +351,5 @@
             </div>
         </div> 
     </section>
-         
-<!-- </div> -->
+
 {% endblock %}

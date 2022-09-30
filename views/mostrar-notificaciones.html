@@ -131,8 +131,7 @@
 
 {% block content %}
 <!-- Contenedor -->
-<!-- <div class="container-fluid" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
-                    
+                   
     <section class="">
         <div class="table-responsive">
             <div class="table-wrapper">
@@ -144,8 +143,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex">
-                                <!-- <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" class="form-control" placeholder="Search&hellip;"> -->
+                                
                                 <div class="search-box mx-1">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                     <input type="text" class="form-control" placeholder="Search&hellip;">
@@ -196,9 +194,7 @@
                             <td>{{n.datetime | date('D/M/Y hh:mm:ss')}}</td>
                             <td>
                                 <a href="/resend-notification/{{n.idNotification}}" class="view" title="Reenviar" data-toggle="tooltip"><i class="fa-solid fa-share"></i></a>
-                                <!-- <a href="/pages/editar-servicio" class="edit" title="Editar" data-toggle="tooltip"><i class="fa-solid fa-pen"></i></a>
-                                <a href="/pages/comprobante-ingreso" class="comprobant1" title="Generar Comprobante de Ingreso" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-down"></i></a>
-                                <a href="mostrar-comprobante-entrega.html" class="comprobant" title="Comprobante de Entrega" data-toggle="tooltip"><i class="fa-solid fa-file-arrow-up"></i></a> -->
+                                
                             </td>
                         </tr>
                         {% endfor %}
@@ -209,6 +205,5 @@
             </div>
         </div> 
     </section>
-         
-<!-- </div> -->
+
 {% endblock %}
