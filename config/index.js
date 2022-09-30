@@ -7,7 +7,9 @@ const config = {
     dbPassword:process.env.DB_PASSWORD,
     dbHost:process.env.DB_HOST,
     dbPort:process.env.DB_PORT,
-    secret:process.env.SECRET
+    secret:process.env.SECRET,
+    accountSid:process.env.TWILIO_ACCOUNT_SID,
+    authToken:process.env.TWILIO_AUTH_TOKEN
 }
 
 module.exports = config
