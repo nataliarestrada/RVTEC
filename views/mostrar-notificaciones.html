@@ -139,7 +139,7 @@
                     <div class="row">
                         <div class="col-sm-4"><h2>Registro de <b>Notificaciones</b></h2></div>
                         <div class="col-sm-2">
-                            <a class="btn btn-success" href="/pages/servicios" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>
+                            <!--  <a class="btn btn-success" href="/pages/servicios" role="button"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Nuevo</a>-->
                         </div>
                         <div class="col-sm-4">
                             <div class="d-flex">
@@ -168,7 +168,7 @@
                             <th>Cliente <i class="fa-solid fa-sort"></i></th>
                             <th>N° contacto</th>
                             <th>Celular<i class="fa-solid fa-sort"></i></th>
-                            <th>Estado<i class="fa-solid fa-sort"></i></th>
+                            
                             <th>Mensaje</th>
                             <th>Fecha de Envio</th>
                             <th>Operaciones</th>
@@ -181,15 +181,7 @@
                             <td>{{n.name}} {{n.surname}}</td>
                             <td>{{n.contact}} - {{n.backup}}</td>
                             <td>{{n.marca}} {{n.model}}</td>
-                            {% if n.idState == 1 %}
-                                <td class="bg-info bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Proceso</td>
-                            {% elif n.idState == 2 %}
-                                <td class="bg-warning bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">En Demora</td>
-                            {% elif n.idState == 3 %}
-                                <td class="bg-success bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Pendiente de Entrega</td>
-                            {% elif n.idState == 4 %}
-                                <td class="bg-danger bg-opacity-50 m-1 rounded d-flex align-items-center justify-content-center shadow-1-strong">Entregado</td>
-                            {% endif %}
+                            
                             <td>{{n.message}}</td>
                             <td>{{n.datetime | date('D/M/Y hh:mm:ss')}}</td>
                             <td>
