@@ -10,7 +10,7 @@ class NotificationController{
 
     async getNotificacionesView(req,res){
         const notifications = await Notification.readAll()
-        console.log(notifications);
+        //console.log(notifications);
         return res.render("mostrar-notificaciones.html", {notifications})
     }
 

@@ -41,8 +41,31 @@ class ClientController{
         
     }
 
+    //desc
     async getHistoryView(req,res){
         const clients = await Client.readClientsServices()
+        const services = await Service.readAll()
+        //console.log(clients);
+        return res.render("historial-clientes.html",{clients:clients, services:services})
+    }
+
+    //asc
+    async getHistoryViewAsc(req,res){
+        const clients = await Client.readClientsServicesAsc()
+        const services = await Service.readAll()
+        //console.log(clients);
+        return res.render("historial-clientes.html",{clients:clients, services:services})
+    }
+
+    async getHistoryViewDni(req,res){
+        const dni=req.body.dni
+        let clients
+        //console.log(dni);
+        if (dni!= ""){
+            clients = await Client.searchHistoryClient(dni)
+        }else{
+            clients = await Client.readClientsServices()
+        }
         const services = await Service.readAll()
         //console.log(clients);
         return res.render("historial-clientes.html",{clients:clients, services:services})

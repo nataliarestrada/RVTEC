@@ -12,7 +12,8 @@ router.post("/registrar-cliente", clientController.signUp)
 
 router.get("/mostrar-clientes", clientController.getClientsView)
 router.get("/historial-clientes", clientController.getHistoryView)
-
+router.get("/historial-clientes-asc", clientController.getHistoryViewAsc)
 router.post("/buscar-cliente", clientController.getClientByDniView)
+router.post("/buscar-dni", clientController.getHistoryViewDni)
 
 module.exports = router

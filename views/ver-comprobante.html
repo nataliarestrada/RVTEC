@@ -13,28 +13,187 @@
 <!-- Contenedor -->
 <!-- <div class="container-fluid py-3" style="min-height: 664px; background-image:linear-gradient(120deg, rgba(73, 73, 73, 0.699) 0%, rgba(0, 0, 0, 0.692) 100%), url(https://eldiariony.com/wp-content/uploads/sites/2/2022/01/anciana-reparacion-celular-hablar-hijos-shutterstock_1907032345.jpg?quality=60&strip=all&w=1200); background-size: cover;"> -->
     <section>
-        <div class="container py-5 h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col-12 col-lg-9 col-xl-7">
-            <div class="card" style="border-radius: 15px;">
-                <div class="card-body p-md-3">
-                <h4 class="mb-4 pb-2 pb-md-0 mb-md-5">Comprobante N°XXX</h4>
-                <img
-                    src="/img/InformeRecibo.jpg"
-                    width="630"
-                    height="400"
-                    alt="MDB Logo"
-                    loading="lazy"
-                />
-                    <!-- Submit button -->
-                <a class="btn text-white btn-success mt-4" href="/documents/Comprobante-Entrega-N0XX.pdf" download="Comprobante-N0XX" role="button">Descargar</a>
-                <a class="btn text-white mt-4" style="background-color: rgb(101, 34, 177);" href="#" role="button">Imprimir</a>
-                <a class="btn text-white mt-4" style="background-color: rgb(34, 148, 177);" href="#" role="button">Descargar e Imprimir</a>
+        <div class="container my-4" style="width: 60%; height: 86vh;"> 
+            <div class="row justify-content-center align-items-center h-100">
+               
+                <div class="card" style="border-radius: 15px; ">
+                    <div class="card-body  fw-light" style="height: 76vh; overflow-y: auto;" >
+                        <div id="pdf">
+                            <div class="row" >
+                                <h3 class="text-center">RVTEC Servicio Tecnico de Celulares</h3>
+                                <p class="text-center"><small class="text-muted">X Documento no valido como factura</small></p>
+                            </div>
+                            <!-- <hr class="dropdown-divider"> -->
+                            <!-- header -->
+                            <div class="row">
+                                
+                                <div class="col">
+                                    <p class="h5 ">{{titulo}}</p>
+                                    <p class="h6 m-0"><i class="fa-solid fa-user"></i> Paul Castillo</p>
+                                    <p class="m-0 fs-6"><i class="fa-solid fa-location-dot"></i> Tilcara, Jujuy</p>
+                                    <p class="m-0 fs-6"><i class="fa-solid fa-phone-volume"></i> Celular: 3882304281</p>
+                                    <p class="m-0 fs-6"><i class="fa-regular fa-calendar"></i> Fecha: {{data.createDate | date("D/M/Y")}} </p>
+                                </div>
+                                <div class="col-3">
+                                    <img
+                                        src="/img/logo.png"
+                                        width="150"
+                                        alt="MDB Logo"
+                                        loading="lazy"
+                                    />
+                                </div>
+                            </div>
+                            
+                            <hr class="dropdown-divider">
+                            <!-- cliente y celular-->
+                            <div class="row my-3">
+                                <!-- ciente -->
+                                <div class="col">
+                                    <p class="h5 text-center">Cliente</p>
+                                    <p class="m-0 fs-6"><u>Nombre y Apellido:</u>   {{data.name}} {{data.surname}} </p>
+                                    <p class="m-0 fs-6"><u>Email:</u>   {{data.email}}</p>
+                                    <p class="m-0 fs-6"><u>DNI:</u>   {{data.dni}} </p>
+                                    <p class="m-0 fs-6"><u>N° de Contacto:</u>   {{data.contact}} </p>
+                                    <p class="m-0 fs-6"><u>N° de Respaldo:</u>   {{data.backup}} </p>
+            
+                                </div>
+                                <!-- celular -->
+                                <div class="col">
+                                    <p class="h5 text-center">Celular</p>
+                                    <p class="m-0 fs-6"><u>Marca y Modelo:</u>   {{data.marca}} {{data.model}}  </p>
+                                    <p class="m-0 fs-6"><u>Pin:</u>   {{data.pin}} </p>
+                                    <p class="m-0 fs-6"><u>Contraseña:</u>   {{data.password}} </p>
+                                    <p class="m-0 fs-6"><u>Patron:</u>   {{data.patron}} </p>
+                                    <p class="m-0 fs-6"><u>Estado:</u>   {{data.state}} </p>
+                                </div>
+                                
+                            </div>
+                            <!-- Servicio -->
+                            <div class="row my-3">
+                                <p class="h5 text-center">Servicio de Reparacion</p>
+                                <div class="row-cols-auto">
+                                    <div class="col">
+                                        <p class="h5 m-0 fs-6"><u>N° de Servicio:</u>   {{data.idService}} </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="m-0 fs-6"><u>Diagnostico:</u>   {{data.diagnostic}} </p>
+                                    </div>
+                                </div>
+                                <div class="row-cols-auto">
+                                    <div class="col">
+                                        <p class="m-0 fs-6"><u>Fecha de Ingreso:</u>   {{data.startDate | date("D/M/Y")}} </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="m-0 fs-6"><u>Fecha de Aprox. de entrega:</u>   {{data.estimateDate | date("D/M/Y")}}</p>
+                                    </div>
+                                    {% if tipo == 2 %}
+                                        <div class="col">
+                                            <p class="m-0 fs-6"><u>Fecha de Entrega:</u>   {{data.endDate | date("D/M/Y")}}</p>
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+                                <div class="row-cols-auto">
+                                    {% if tipo == 1 %}
+                                        <div class="col">
+                                            <p class="m-0 fs-6"><u>Estado de la reparacion:</u>   EN PROCESO </p>
+                                        </div>
+                                    {% else%}
+                                        <div class="col">
+                                            <p class="m-0 fs-6"><u>Estado de la reparacion:</u>   {{data.estado}} </p>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col">
+                                        <p class="m-0 fs-6"><u>Descripcion:</u>   {{data.description}} </p>
+                                    </div>
+                                </div>
+                                <div class="row-cols-auto">
+                                    <div class="col">
+                                        <p class="m-0 fs-6"><u>Costo de la Reparacion:</u>   {{data.costService}} </p>
+                                    </div>
+                                    {% if tipo == 1 %} 
+                                        <div class="col">
+                                            <p class="m-0 fs-6"><u>Anticipo:</u>   {{data.cost}}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr class="dropdown-divider">
+                            <!-- Politicas -->
+                            <div class="row py-2">
+                                <p class="px-4" style="font-size: 12px;">Sr. Cliente: <br> -La fecha aproximada de entrega es CONDICIONAL. Pudiendo variar segun el desarrollo del programa de tareas y disponibilidad de recursos 
+                                <br> -Si entrego su equipo con accesorios, verifique que los mismos (equipo y accesorios) esten correctamente indicados en este combrobante, pues en caso contrario no tendra derecho a reclamo alguno
+                                <br> -Para cualquier consulta es impresindible citar N° de reparacion indicado en este comprobante
+                                <br> -Conserve este combrobante, pues unicamente contra su entrega podra retirar su equipo
+                                <br> -De no ser retirada su reparacion en termino, sera actualizado el costo de la misma, al momento de la entrega
+                                <br> -Toda reparacion debe ser retirada dentro de los 10 dias de comunicado su arreglo, no teniendo luego derecho a reclamo alguno
+                                <br> -Las reparaciones seran abonadas en EFECTIVO UNICAMENTE</p>
+                            </div>
+                            <hr class="dropdown-divider">
+    
+                            
+                            <div class="row text-center" style="margin-top: 50px;">
+                                <div class="col">
+                                    <p> Firma Tecnico</p>
+                                </div>
+                                <div class="col">
+                                    <p>Firma Cliente</p>
+                                </div>
+                            </div>
+    
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button class="btn text-white btn-success mt-4" id="btnCrearPdf">Descargar</button>
+                        <a class="btn text-white mt-4" style="background-color: rgb(101, 34, 177);" href="#" role="button">Imprimir</a>
+                        <a class="btn text-white mt-4" style="background-color: rgb(34, 148, 177);" href="#" role="button">Descargar e Imprimir</a>
+                    </div>
+                    
                 </div>
+                
             </div>
-            </div>
-        </div>
         </div>
     </section>
   <!-- </div> -->
+{% endblock %}
+
+{% block scrip %} 
+    <!-- El script de la librería-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Escuchamos el click del botón
+            const $boton = document.getElementById("btnCrearPdf");
+            $boton.addEventListener("click", () => {
+                const $elementoParaConvertir = document.getElementById("pdf") // <-- Aquí puedes elegir cualquier elemento del DOM
+                html2pdf()
+                    .set({
+                        margin: 1,
+                        filename: 'documento.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 3, // A mayor escala, mejores gráficos, pero más peso
+                            letterRendering: true,
+                        },
+                        jsPDF: {
+                            unit: "cm",
+                            format: "a4",
+                            orientation: 'portrait' // landscape o portrait
+                        }
+                    })
+                    .from($elementoParaConvertir)
+                    .save()
+                    .catch(err => console.log(err))
+                    .finality()
+                    .then(() => {
+                        console.log("GUARDADO")
+                    })
+            });
+        });
+    </script>
+
 {% endblock %}

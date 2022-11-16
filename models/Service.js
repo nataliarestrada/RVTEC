@@ -17,12 +17,16 @@ class Service{
 
  //El metodo puede ser utilizado sin crear una instancia
     static async readAll(){
-        //return await query("SELECT * FROM services")
         return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, SUM(payments.cost) AS 'cost', (services.costService - SUM(payments.cost)) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService GROUP BY services.idService")
+        //return await query("SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, SUM(payments.cost) AS 'cost', (services.costService - SUM(payments.cost)) AS 'saldo' FROM services, clients,phones,payments,states WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService AND services.idState=states.id GROUP BY services.idService")
+    }
+
+    static async search(tabla,col,texto){
+        return await query(`SELECT services.*, clients.name, clients.surname, phones.marca, phones.model, phones.state, SUM(payments.cost) AS 'cost', (services.costService - SUM(payments.cost)) AS 'saldo' FROM services, clients,phones,payments,states WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService AND services.idState=states.id AND ` + tabla + `.` + col + ` LIKE "%` + texto + `%" GROUP BY services.idService`)
     }
 
     static async editService(idService){
-        return await query("SELECT services.*, clients.*, phones.*, payments.cost, (services.costService - payments.cost) AS 'saldo' FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService AND services.idService = " + idService)
+        return await query("SELECT services.*, clients.*, phones.*, payments.cost FROM services, clients,phones,payments WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND payments.idService=services.idService AND payments.typePayment=1 AND services.idService = " + idService)
     }
 
     static async readOne(id){

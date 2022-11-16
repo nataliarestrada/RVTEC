@@ -1,4 +1,5 @@
 const Voucher = require("../models/Voucher")
+const Service = require("../models/Service")
 class VoucherController{
     
 
@@ -46,8 +47,21 @@ class VoucherController{
         return res.redirect("/mostrar-comprobante-entrega")
     }
 
-    getViewVoucher(req,res){
-        return res.render("ver-comprobante.html")
+    async getViewVoucher(req,res){
+        const id = req.params.idVoucher
+        const comprobante = await Voucher.readPdf(id)
+        console.log(comprobante)
+
+        const tipo = req.params.type
+        let titulo 
+        if (tipo == "1"){
+            titulo="Combrobante de recepcion de celular para ingreso a Servicio Tecnico"
+        }
+        if (tipo == "2"){
+            titulo="Combrobante de Entrega de celular reparado"
+        }
+
+        return res.render("ver-comprobante.html",{data:comprobante[0], titulo, tipo})
     }
     //informes
     getICelularView(req,res){

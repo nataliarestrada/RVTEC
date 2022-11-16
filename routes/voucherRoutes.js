@@ -13,7 +13,7 @@ router.get("/generar-comprobante-recepcion/:idService", voucherController.regist
 router.get("/generar-comprobante-entrega/:idService", voucherController.registrarComprobanteEntrega)
 
 //pdf
-router.get("/ver-comprobante", voucherController.getViewVoucher)
+router.get("/ver-comprobante/:idVoucher/tipo/:type", voucherController.getViewVoucher)
 
 //informes
 router.get("/informe-celulares", voucherController.getICelularView)

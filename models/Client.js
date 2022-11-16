@@ -17,8 +17,22 @@ class Client{
         return await query("SELECT * FROM clients")
     }
 
+    static async searchClients(col, text){
+        return await query(`SELECT * FROM clients WHERE `+ col +` LIKE "%` +text+ `%"`)
+    }
+    //busqueda historial
+    static async searchHistoryClient(dni){
+        return await query("SELECT clients.*, COUNT(services.idClient) AS 'cantidad' FROM clients LEFT JOIN services ON clients.idClient = services.idClient WHERE dni = ? GROUP BY clients.idClient ORDER BY cantidad DESC", [dni])
+    }
+
+    //descendente
     static async readClientsServices(){
         return await query("SELECT clients.*, COUNT(services.idClient) AS 'cantidad' FROM clients LEFT JOIN services ON clients.idClient = services.idClient GROUP BY clients.idClient ORDER BY cantidad DESC")
+    }
+
+    //ascendente
+    static async readClientsServicesAsc(){
+        return await query("SELECT clients.*, COUNT(services.idClient) AS 'cantidad' FROM clients LEFT JOIN services ON clients.idClient = services.idClient GROUP BY clients.idClient ORDER BY cantidad ASC")
     }
     
     static async readOne(idClient){

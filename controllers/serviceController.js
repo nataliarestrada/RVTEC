@@ -87,6 +87,34 @@ class ServiceController{
         return res.render("mostrar-servicios.html",{services:services})
     }
 
+    async searchService(req,res){
+        let services
+        const filtro = req.body.filtro
+        const texto = req.body.texto
+        if (texto != ""){
+            if (filtro == 1){
+                //codigo
+                services = await Service.search("services","idService",texto)
+            }
+            if (filtro == 2){
+                //cliente
+                services = await Service.search("clients","name",texto)
+            }
+            if (filtro == 3){
+                //celular
+                services = await Service.search("phones","marca",texto)
+            }
+            if (filtro == 4){
+                //estado
+                services = await Service.search("states","description",texto)
+            }
+        }else{
+            services = await Service.readAll()
+        }
+
+        return res.render("mostrar-servicios.html",{services:services})
+    }
+
     async recordDelivery(req,res){
         //registrar pago
         const fecha = Date.now();

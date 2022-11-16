@@ -18,9 +18,14 @@ class Voucher{
         return await query("SELECT * FROM vouchers WHERE idVoucher= ?", [id])
     }
 
+    static async readPdf(id){
+        return await query("SELECT clients.name, clients.surname, clients.email, clients.dni, clients.contact, clients.backup, phones.marca, phones.model, phones.password, phones.pin, phones.patron, phones.state, services.diagnostic, services.startDate, services.estimateDate, services.endDate, services.description, states.description as 'estado', services.costService, payments.cost, vouchers.* FROM services,clients,phones,payments,vouchers,states WHERE clients.idClient=services.idClient AND phones.idPhone=services.idPhone AND services.idState=states.id AND payments.idService=services.idService AND vouchers.idService=services.idService AND payments.typePayment=1 AND vouchers.idVoucher= ?;", [id])
+    }
+
     static async readVoucher(type){
         return await query("SELECT clients.name, clients.surname, phones.marca, phones.model, payments.cost, vouchers.* FROM vouchers, clients, phones, payments, services WHERE vouchers.idService = services.idService AND payments.idService = services.idService AND services.idClient = clients.idClient AND services.idPhone = phones.idPhone AND payments.typePayment = ? AND vouchers.type= ?", [type, type])
     }
+
 
     async save(){
     
