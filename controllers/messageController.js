@@ -13,10 +13,9 @@ async function sendMessage(number, message, idService){
            from: 'whatsapp:+14155238886', // El número que te proporcionen       
            to: `whatsapp:+549${number}`
         });
-        console.log(response)
+        //console.log(response)
         const hoy = Date.now();
         const fecha = new Date(hoy);
-        //const fechayhora = fecha.toLocaleString()
 
         const data = {
             idService: idService,

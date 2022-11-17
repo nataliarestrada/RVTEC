@@ -46,7 +46,7 @@ app.use(notificationRoutes)
 //     autoescape: true,
 //     express: app
 // });
-const dateFilter = require('nunjucks-date-filter');
+const dateFilter = require('nunjucks-date-filter-local');
 
 function setUpNunjucks(expressApp) {
 
