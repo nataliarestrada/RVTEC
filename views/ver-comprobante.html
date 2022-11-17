@@ -170,7 +170,7 @@
                 html2pdf()
                     .set({
                         margin: 1,
-                        filename: 'documento.pdf',
+                        filename: 'Comprobante{{data.createDate | date("D/M/Y")}}.pdf',
                         image: {
                             type: 'jpeg',
                             quality: 0.98

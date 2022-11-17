@@ -11,7 +11,7 @@ async function sendMessage(number, message, idService){
         const response = await client.messages.create({
            body: message, 
            from: 'whatsapp:+14155238886', // El número que te proporcionen       
-           to: `whatsapp:+549${number}`
+           to: `whatsapp:+5493885181297`
         });
         //console.log(response)
         const hoy = Date.now();
